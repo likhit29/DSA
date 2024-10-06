@@ -1,0 +1,774 @@
+// Data types
+number, boolean, string, undefined, null, bignit, symbol
+
+// typeof x
+
+// we do not have to declre variable type like in c++
+
+// +ve, -ve , decimal - number
+
+// 2**3=8    -   power
+
+// NAN  - 0/0  ,   NAN - 1 , NAN + 1 , NAN * 1
+
+// ()  -   **   -   *,/,%   -   +,-      
+  for same level (eg *,/,% ) we will be goin left to right in equation
+
+// let is a keyword for drclaring variable
+    let a = 3;
+
+//const - values of this variable cannot be changed in program
+    const b = 3;     
+
+// var is keyword used in old times (let is the new keyword)
+    var c = 3; 
+
+// age+= 5           -          age = age + 5
+// age++ , age--    post 
+//++a preincrement
+
+
+//boolean   (small true no capital True)
+    a = false; 
+    a = true; 
+
+
+// we can change type of variable by simply changing value 
+    a = true;
+    a = 4;
+
+
+// string
+    let name = "Likhit Chaudhary";
+    let name = 'Likhit Chaudhary';
+
+    name[0], name[1].............name[name.length - 1 ], name[name.length]   // index start from 0
+    
+    name.length             // for total no of characters
+
+
+// adding of strings
+
+    "Likhit" + " " + "Chaudhary"
+
+    first = "Likhit";
+    last = "Chaudhary"
+    full = first + " " + last
+
+    "tony" + 1                    -          "tony1"
+    
+
+// let a = null; 
+
+// console.log();    used to print values in console
+example - console.log("Hello");
+          console.log(1+2);
+          console.log("Likhit", 1+2);
+
+
+// linking of js file with html - below line is written in last in body tag
+
+    <script src="app.js"> </script>
+
+// Template literals
+example - 
+    let a = 5;
+    let b = 10;
+    let output = "total" + (a+b) + "sum";
+    let output = (`total ${a+b} sum `);
+
+
+// Operators 
+compres value, not type    ==
+comapres type and values    ===
+
+5>10   -  false 
+5 == 5   true
+5 = '5' -  true  (number , string)
+0 == ' '  - true
+0 === ' '  - false
+0 == false  - true
+0 == false  - false
+null == defined - true
+null == defined - false
+'a' > 'A' - true         (a<b<c<d<e ,  A<B<C<D)  on basis of unicode 
+
+//  && and ,   || Or , ! not 
+
+
+// False values - 0, NAN, null , undefined, empty string""
+
+//alert("kuch bhi likh sakte");
+//console.error("      ");
+//console.warn("      ");
+//prompt("     ");          - used to take input
+
+
+// methods - actipons that can be pefromed on objects      -      stringname.method()      
+
+    stringname.trim()  - used to remove space from start and end not from between the string characters
+
+//Strings in the JS are immutable - no changes are made in the string. when we make some changes or use some method new string is created and old one remains same 
+
+    stringname.toUpperCase()    -   Use to uppercase all letters in the string
+    stringname.toLowerCase()  
+
+//Argument in string          -       stringname.method(arg)
+
+      stringname.indexOf("   ")  - used for finding the index of any word, line, character
+
+// using multiple methods at a time      -    stringname.trim().toUpperCase();
+
+// stringname.slice(s,e)   -  returns the part of string from s index to e index
+// stringname.slice(-num)  =  stringname.slice(length - num) 
+
+//stringname.replace("love", "do")        -     replace love word from do in the string
+//stringname.repeat(6)        -    repeat string 6 times
+
+// if-else, switch
+
+//array = ["likhit", 5.6 , 5]; - we can store different type of data in array 
+    array[0] - ' likhit'
+    array[0][0]  -  'l'
+    array[0][1]  -  'i'
+
+
+//arrayname=[]   - we cam create empty array
+//arrayname.length  -    for knowing the length of array 
+
+
+// Array - if we have store element in 0,1,2 position of array and then we can directly store element in 10 position  and the 3 to 9 will be empty  and total length will be 11
+
+// arrayname.push("   ")    -    add elements at the end of array
+// arrayname.pop()     -      remove element from the end of array and returns it
+// arrayname.unshift("    ")        -     add element to the start
+// arrayname.shift()         -      remove element from the start of array and returns it
+
+//arrayname.indexOf("     ")      - returns the index 
+//arrayname.includes("    ")     -   finds the element if found returns true and if not returns false
+
+//arrayname.reverse()     -    to reverse an array ,  it makes changes in old array
+//array1.concat(array2)   -     to merge to 2 array
+
+//arrayname.slice(s,e)       -   returns a copies portion of array from s to e index
+//arrayname.slice(-num)  =  arrayname.slice(array.length - num) 
+
+//splice - removes/replaces/add elements in place , it make changes in old array
+  arrayname.splice(start,delete count, "item 0", "item 1" , "item 2"................)
+
+//arrayname.sort()          -       used to sort array in ascending order
+
+// using multiple methods at a time      -  Ex:-  arrayname.reverse().indexOf("     ")
+
+// Array - [1] == [1]    -   false ,   [1] === [1]    -   false
+
+
+//EX -  let array1 = ['a' , 'b', 'c']
+        let array2 = array1;       // both array are having same address, both are pointing to same address
+        array1.push('d');          // array2 will also have element D
+        array1 == array2           // true
+ 
+// const array = [1,2,3,4]       // we can perform push, pop.....operations but we can not change the address or make another array of same address(array1 = array2) , or create new array with same name
+
+                                                    
+// Nested array -       let array = [ [2,4] , [3,6] , [4,8] ]   
+                        array              //write just array in console and see the result                                                       
+                        array[0] [0]  =  2     // array [row - 1] [column - 1]
+            // rows = total no of nested arrays = 3
+            // columns = depend on individual nested array length = 2 
+
+
+
+// for
+
+// for of loop    
+        for(element of array/string ) {
+            .............
+        }
+
+Ex -    for(letter of "apnacollege") {
+            console.log(letter);
+        }        
+
+Ex - let herors = [ ['a','b','c'] , ['x','y','z'] ]
+        for(list of heroes) {
+            for(character of list) {
+                console.log(hero)
+            }
+        }
+
+
+
+// type of array is object     -     (key,value)
+
+
+Ex - Creating a object of name student
+    
+    const student = {                       // using of const keyword 
+        name: "shradha",                     // sequence can be changed of name,age,marks,city while printing 
+        age: 23,                             // observe comma, colon and semicolon
+        marks: 94.4,
+        city: ["Delhi" , "Pune"]             // we can use array also in a object
+    };
+    console.log(student);
+    console.log(student["name"]);
+    console.log(student.name);
+    console.log(student.name = "likhit");      // change the name
+    console.log(student.name = 10);           // we can store number also instead of string
+    console.log(student.gender);             // add new property
+    console.log(student.gender = "male");  
+    console.log(delete student.name);      // delete keyword is used to delete a property
+
+
+// js convert into string (screenshot)
+
+// nesting of object
+const classInfo = {
+    aman : {
+        grade: "A+",
+        city: "Delhi"
+    };
+    shradha : {
+        grade: "A",
+        city: "Pune"    
+    };
+    karan : {
+        grade: "0",
+        city: "Mumbai
+    }
+    };
+
+    console.log(classInfo); 
+    console.log(classInfo.aman); 
+    console.log(classInfo.aman.grade); 
+    console.log(classInfo.aman.grade = "C"); 
+
+
+
+
+
+
+
+
+
+
+// Array of object
+
+
+
+const classInfo = [                // observe types of brackets, comma, colon and semicolon
+    {
+        name: "aman",
+        grade: "A+",
+        city: "Delhi"
+    },
+    {
+        name: "shradha",
+        grade: "A",
+        city: "Pune"    
+    },
+    {
+        name: "karan",
+        grade: "0",
+        city: "Mumbai"
+    }
+    ];
+
+    console.log(classInfo); 
+    console.log(classInfo[0]); 
+    console.log(classInfo[1]); 
+    console.log(classInfo[1].name); 
+    console.log(classInfo[1].name = "likhit"); 
+
+// Math.PI
+// Math.E
+// Math.abs(n)       -    gives absoulte value of number 
+// Math.pow(a,b)     -    power
+// Math.floor(n)     -    round off the number(nearest smallest number)
+// Math.ceil(n)      -    round off the number(nearest largest number)
+// Math.random()     -    gives random value between 0 and 1 
+
+
+
+// genreate random numbers from 1 to 10
+    Math.floor(Math.random() * 10) + 1
+// genreate random numbers from 21 to 25
+    Math.floor(Math.random() * 5) + 21
+     
+
+
+
+//  declaring of function
+    function functname(){
+            ...............
+        }
+
+    functname();                     // calling of function
+
+
+// argument in function
+    function functname(argname1, argname 2, ............){
+            ...............
+            return val;                    //not necessary to write return but if needed we can use
+        }
+
+    functname(arg1, arg2, ............);
+
+//variables declared inside function are not accessible outside the function
+//variables declared inside block scope {} are not accessible outside the block
+//variables decalred outside the function can be used in nested function but vice versa not true
+
+
+
+// let variable = function(argname1, argname 2, ............){
+    ...................
+}
+
+variable(arg1,arg2,....);
+
+
+
+
+
+
+//Example 
+        function multipleGreet (func, count) {
+            for(let i=1; i<=count; i++) { 
+                func(); 
+            } 
+        } 
+        let greet = function() { 
+            console. log("hello"); 
+        } 
+        multipleGreet(greet, 1000); 
+
+
+//Example 
+
+        function oddEvenTest (request) {
+            if(request == "odd") {
+                return function(n) {
+                    console. log(!(n%2 == 0));
+                }
+            } 
+            else if(request == "even") {
+                return function(n) {
+                    console.log(n%2 == 0);
+                }
+            }
+            else {
+                console. log("wrong request");  
+            }
+        }
+
+//Example
+
+const calculator = {           // this code will also work if we not use function keyword
+    num: 55,
+    add: function(a, b) {
+        return a + b;
+    },
+    sub: function(a, b) {
+        return a - b;
+    },
+    mul: function(a, b) {
+        return a * b;
+    }
+};
+console.log(calculator.add(1,2))
+
+
+// this keyword - used to call object in function
+
+    const student = {
+        name: “"shradha",
+        age: 23,
+        eng: 95,
+        math: 93,
+        phy: 97,
+        getAvg() {
+            console.log(this);
+            let avg = (this.eng + this.math + this.phy) / 3;
+            console.log(`${this.name} got avg marks = ${avg}`);
+        }
+    }
+
+//  console.log(window)
+    console.log(this)
+
+ 
+//try and catch
+
+    try {
+            ..............
+    } 
+    catch {
+            ...............
+    }
+
+
+// arrow function
+    const function_name = (argname1, argname 2, .....)  => {............};  
+
+// implict arrow function
+    const function_name = (argname1, argname 2, .....)  => (value);  
+
+    value can be just a+b or a*b like this
+
+
+//set timeout - no need to call this function, it will wait for set time and then execute once
+
+setTimeout( function, timeout )          // timeout is in ms  so for seconds *1000
+
+setTimeout( () => {
+console.log("Apna College");
+}, 4000);
+
+            or
+setTimeout( function () {
+console.log("Apna College");
+}, 4000);
+
+//set interval - it will wait for set time and then execute infinite time, to stop we can create id
+
+setInterval( function, timeout )        
+
+let college =   setInterval( () => {
+                    console.log("Apna College");
+                }, 4000);
+
+                clearInterval(college);          
+
+
+// Example
+
+const student = {
+    name: "aman", 
+    marks: 95,
+    prop: this,   //global scope
+    getName: function () {
+        console.log(this);     // here this point to the object
+        return this.name;
+    }, 
+    getMarks: () => {
+    console.log(this);      //here this level is same as object so it will point to parent's(object's) scope which is window
+    return this.marks;
+    },
+    getInfol: function () {
+        setTimeout (() => {
+            console.log (this);             //student
+        }, 2000);
+    },
+    getInfo2: function () {
+        setTimeout ( function () {
+            console.log(this);              //window 
+    }, 2000);
+    },
+    };
+
+    //console.log(student.prop );
+    //console.log(student.getName());
+    //console.log(student.getMarks());
+    //console.log(student.getInfol());
+    //console.log(student.getInfo2());
+
+
+//forEach - arr.forEach(     )
+used to print each element of array
+
+let arr = [1, 2, 3, 4, 5];
+
+function print(el) {             // let print = function(el) 
+    console.log(el);
+}
+arr.forEach(print);
+
+// OR
+
+arr.forEach(function(el) {
+    console.log(el);
+});
+
+
+//Example of forEach
+
+let arr = [
+{ 
+name: "aman", 
+marks: 95,
+}, 
+{ 
+name: "shradha",
+marks: 94.4, 
+},
+{ 
+name: "rajat",
+marks: 92, 
+}
+];
+arr.forEach((element) => { 
+    console.log(element);
+    console.log(element.marks);
+});
+
+
+
+// Map - let newarr = arr.map(      ) , it creates new array with the operations pefromed 
+
+let num = [1, 2, 3, 4]; 
+let double = num.map(function(el) { 
+    return el*2; 
+});
+console.log(double);
+
+
+//Filter  -  let newarr = arr.filter(     ) ,  it creates new array, the element which gives true is added in new array and the element which gives false is not added
+
+let nums = [1, 2, 3, 4, 7, 8, 2, 9, 10, 12, 11]; 
+let ans = nums.filter((el) => {
+    return el%2 == 0;     // even - true , odd - false
+});
+console.log(ans);
+
+
+
+//Every - Returns true if every element of array gives true for some function. Else returns false. 
+arr.every(     );
+
+[1, 2, 3, 4].every((el) => (el%2 == 0));    -   false
+
+[2, 4].every((el) => (el%2 == 0));   -   true 
+
+
+//Reduce - reduce the array to a single value
+arr.reduce( reducer function with 2 variables for (accumulator, element) ); 
+
+
+[1, 2, 3, 4].reduce( (res, el) => (res + el));   -   10       // accumulator = accumulator + element
+
+ 
+//Example - maximum in array 
+let nums = [2, 3, 4, 5, 3, 4, 7, 8, 1, 2];
+let result = nums.reduce( (max, el) => {
+    if(el > max) {
+        return el;
+    } 
+    else {
+        return max;
+    }
+});
+
+
+
+//Default parameter
+1. Example -    function sum(a , b = 2) {
+                    return a + b;
+                }
+                console.log(sum(1, 3));         //4
+                console.log(sum(1));         //a = 1, b = 2
+
+2. Example -    function sum(a = 2, b) {
+                    return a + b;
+                }
+
+                console.log(sum(1, 3));         //4
+                console.log(sum(1));         //a = 1, b = undefined
+
+
+
+
+//Spread - [] Expands an iterable into multiple values. array, string.......
+
+function func (...arr) {                  // 3 dot
+//do something 
+}
+
+
+Ex1 -   console.log(..."apnacollege");     
+
+Ex2 -   let arr = [1, 2, 3, 4, 5];
+        console.log(Math.min(...arr)); 
+        console.log(...arr); 
+
+Ex3 -   let arr1 = [1, 2, 3, 4, 5];
+        let arr2 = [6, 7, 8, 9, 10];
+        let newArr1 = [...arr1];  
+        let newArr2 = [...arr1, ...arr2];
+        console.log(newArr1);       // create a copy of old array
+        console.log(newArr2); 
+        
+
+Ex4 -   let chars = [..."hello"]; 
+        console.log(chars);        // create a new array which store character of string
+
+// Spread object {}
+
+Ex1  -  const data = {
+            email: "ironman@gmail.com",
+            password: "abcd",
+        };
+        const dataCopy = { ...data, id: 123, country: "India" };
+
+Ex2  -  let arr = [1, 2, 3, 4, 5];               //val
+        let objl = { ...arr };                   //obj —> key:val
+        let obj2 = { ..."hello" };
+
+ 
+
+ //////////////////////////////////result
+
+
+
+
+ //Destructing array []
+
+Ex1  -  let names = ["tony", "bruce", "peter", "steve", "abc", "xyz", "pyq"];
+        // let winner = names [0];             //instead of writing like this we can use Destructing
+        // let runnerup = names[1];
+        let [winner, runnerup, ...remaining] = names;
+        console.log(winner);
+        console.log(runnerup);
+        console.log(remaining);
+ 
+
+
+ //Destructing object {}
+
+Ex  -   const student = {
+            name: "karan",
+            age: 14,
+            class: 9,
+            username: "karan@l23",
+            password: "abcd",
+        };
+        let {username, password: secret} = student;       // we can change the name of key  (password: secret)
+        console.log(username);
+        console.log(secret);
+
+
+
+
+
+
+
+
+
+
+//console.dir(document);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                        
+
+
+
+11 baje - wake up
+12 baje - naha do liya
+1 baje - kahan kha liye
+1 - 4     -   class
+4-6     - niche aaja
+10 baje tak timepass
+10 - 4        -        
+ freinds, 
+                                                   
+                                          
+
+                                                 
+                                            
+                                                      
+                                     
+                                    
+                          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

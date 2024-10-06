@@ -1,0 +1,168 @@
+//  Print 
+    print("Hello World!!")
+    print(2 + 4)
+
+
+//  Terminology
+
+\n Inserts a new line in the text at the point
+\\ Inserts a backslash character in the text at the point
+\” Inserts a double quote character in the text at that point
+\’ Inserts a single quote character in the text at that point
+\t Inserts a Tab in the text at that point
+\b Inserts a backspace in the text at that point
+
+
+
+//  Single line comment - #
+//  Multi line comments - We use “ “ “ ….. Comment …. “ “ “
+
+
+// a, b, c = "Hello World", 23, 56.66
+    print(a)
+    print(b)
+    print(c)
+    print(b + c)
+
+
+
+
+
+• int
+• float
+• str
+• Booleans (<class 'bool'>): Used to store True/False type values
+• None: None is a literal to describe 'Nothing' in Python
+• List
+• Tuple
+• Set
+• Dictionary
+
+
+
+
+
+// Display their type
+    age = 44
+    print(type(age))
+
+
+
+
+
+// Operators
+    ** Exponentiation a ** b
+    // Floor Division a // b
+    %=           x = x % 5
+    //=          x = x // 5
+    **=          x = x ** 5  
+
+
+
+
+// 
+while condition:
+    Body of your While Loop
+
+
+//
+for i in range(1, 10):
+    if i == 5: 
+        continue
+    print(i)
+
+
+
+// List
+Front indexing start from 0
+Backward indexing start from -1
+
+
+    a = [45, 33, 22, 12]
+    b = ["Anirudh", 67, 89.99, -100, "Hello"]
+    c = []
+    print(a)
+    print(a[3])
+    print(a[-1])
+    print(a[-4])
+    print(a[0:2])
+    print(b)
+    print(c)
+    print(type(a))
+
+
+
+
+
+
+// Tuples - The main difference between tuples and lists is that lists are mutable and
+tuples are not. A mutable object is one that can be changed. An immutable
+object is one that contains a fixed value that cannot be changed. If it needs to
+be changed, a new object must be created.
+Therefore, you would generally store different data inside a tuple than you
+would a list. Lists typically contain items that are like each other, whereas
+tuples usually contain items that are diverse in type or character. However,
+there is no hard and fast rule to this. But if you want to be able to update the
+individual items, use a list. Otherwise, use a tuple.
+
+
+
+
+
+
+
+
+// Dictionary - In Python, a dictionary is an unordered collection of items, with each item consisting of a key: value pair (separated by a colon).
+# Dictionary keys must be immutable. 
+    student_info = {"name": "James", "roll": 45, "gender": "Male"}
+    print(student_info)
+    print(student_info["name"])
+    print(student_info.get("name"))
+# Key exists, so it will update the value
+    student_info["name"] = 'Max'
+    print(student_info)
+# Key does not exists, so it will add the key:value
+    student_info["phnumber"] = 5874747847
+    print(student_info)
+# It will delete a single item
+    del student_info["name"]
+    print(student_info)
+# It will delete the whole dictionary
+    del student_info
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

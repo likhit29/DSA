@@ -1,0 +1,1050 @@
+// 12 th lecture code with harry
+
+
+
+//to set limit to print decimal
+cout<<fixed<<setprecision(5)<<a;
+
+// to +ve a number    rquiures a library
+abs()
+
+
+
+
+
+
+//Pointers 
+int a = 3;
+int* b =  &a;
+cout<<b;   // adresss
+cout<<*b;   //value
+cout<<&a;   // adress
+
+
+//call by reference and call by value
+
+#include<iostream>
+using namespace std;
+
+int sum(int a, int b){
+    int c = a + b;
+    return c;
+}
+
+// This will not swap a and b
+void swap(int a, int b){ //temp a b
+    int temp = a;        //4   4  5   
+    a = b;               //4   5  5
+    b = temp;            //4   5  4 
+}
+
+// Call by reference using pointers
+void swapPointer(int* a, int* b){ //temp a b
+    int temp = *a;          //4   4  5   
+    *a = *b;               //4   5  5
+    *b = temp;            //4   5  4 
+}
+
+// Call by reference using C++ reference Variables
+// int & 
+void swapReferenceVar(int &a, int &b){ //temp a b
+    int temp = a;          //4   4  5   
+    a = b;               //4   5  5
+    b = temp;            //4   5  4 
+    // return a;
+}
+
+int main(){
+    int x =4, y=5;
+    // cout<<"The sum of 4 and 5 is "<<sum(a, b);
+    cout<<"The value of x is "<<x<<" and the value of y is "<<y<<endl;
+    // swap(x, y); // This will not swap a and b
+    // swapPointer(&x, &y); //This will swap a and b using pointer reference
+    swapReferenceVar(x, y); //This will swap a and b using reference variables
+    // swapReferenceVar(x, y) = 766; //This will swap a and b using reference variables
+    cout<<"The value of x is "<<x<<" and the value of y is "<<y<<endl; 
+    return 0;
+}
+
+
+
+// array and Pointers
+
+marks[4]={20,44,66,84};
+marks[3] =  50;     // we can change the value of array
+int* p = marks;            // &marks is wrong in aaray
+cout<<*p;
+cout<<*(p+1);
+
+
+
+//Structure
+
+typedef struct employee
+{
+    int id;
+    float salary;
+} ep;   // for not writng struct employee wapas wapas
+
+int main()
+{
+    struct employee likhit;
+    ep likhit;  
+    likhit.id = 5;
+    likhit.salary = 10000000  
+    cout<<likhit.id;
+}
+
+
+//union it is just like Structure but it just take any of 1 value from listed value
+
+//enum
+
+enum Meal{breakfast,lunch, dinner};
+Meal a = lunch;
+cout<<a;
+cout<<lunch;
+
+
+//function
+
+int sum(int a, int b){     // a and b are formal parameters
+    int c = a + b;
+    return c;
+}
+
+int main(){
+
+   cout<<sum(4,5);     //4 and 5 are actual parameters
+   return 0;
+}
+
+//not acceptale in function
+int sum(int a, b)
+
+//acceptable in function
+int sum(int, int)
+
+//to write function after main function
+
+int sum(int a, int b);
+
+int main(){
+
+   cout<<sum(4,5);
+   return 0;
+}
+int sum(int a, int b){
+    int c = a + b;
+    return c;
+}
+
+
+
+ 
+//inline function is used for short function beacuse it uses more memory and reduces time
+inline int sum(int a, int b){
+    int c = a + b;
+    return c;
+}
+
+
+
+
+//static function 
+//in function if only one time we have to use any value then static is used
+{
+    static int c=0;   // only one time it will be used
+    c = c + 1;
+    return c;
+}
+
+
+//default argument
+int sum(int a, int b = 5) { }   // if in main function we do not declare value of b then default value of b=5 will be taken
+
+//recursion in factorial
+int factorial(int n){
+    if(n<=1){
+        return 1;
+    }
+    return n * factorial(n-1);
+}
+
+
+//recursion in fibonacci
+int fib(int n){
+    if(n<2){
+        return 1;
+    }
+    return fib(n-2) + fib (n-1);
+}
+
+
+// access specifier (class)
+  
+  
+// nesting of member function
+
+
+class xyz
+{
+    private:
+        void lmn(void);
+    
+    public:
+        void read(void);
+       void abc(void);
+};
+
+void xyz :: read(void) {  }
+void xyz :: abc(void)  { 
+    lmn();               // nesting of function in function, also is used if this function was declared in private, if private we can use in main function          
+ }
+
+int main() {
+
+    xyz o;
+    o.read();
+    o.abc();
+}
+
+
+// by default everything is private
+// if function is not taking any input then we write void
+
+
+// 
+class employee{
+    ...........
+}ob1 , ob2 , ob3;
+
+
+
+// static variable in class
+
+
+class xyz
+{
+    private:
+        int id;
+        static int count;
+    
+    public:
+        void read(void){
+            cin>>id;
+            count ++;
+        }
+       void abc(void);
+};
+
+int xyz :: count;  // default value is 0 , here we can declare start value of count also
+
+void xyz :: abc(void)  { }
+
+int main() {
+
+    xyz o;
+    o.read();
+    o.abc();
+}
+
+// to declare string    
+string abc
+abc.length   // for length of string
+s.at(i)      // element s.at(i) at i position
+
+
+
+// to create object in array
+
+class abc{};
+int main(){
+
+    abc array_name[4];   //declare array
+    array_name[0].function_name();  //array use
+    array_name[1].function_name();
+}
+
+
+//   To acccess private data member of any class outside the class we use the freind function
+/* since it is not in the class it cannot be called from the object of that class.
+It cannot access the members directly by their names and need object_name.member_name to access any member.    */
+class abc {
+    private:
+    int a ,b;
+    public:
+    freind void abc xyz( );   // can be declare in private or public
+};
+    
+    void abc xyz( ){
+        c = a+b;
+        return c;   
+    }
+
+
+// when creating member function we have to specify its return type
+// for constructor it is not necessary to write retrun type
+
+
+//Default constructor
+#include <iostream>
+using namespace std;
+
+class Complex
+{
+    int a, b;
+
+public:
+  
+    Complex(void); // Constructor declaration
+
+    void printNumber()
+    {
+        cout << "Your number is " << a << " + " << b << "i" << endl;
+    }
+};
+
+Complex ::Complex(void) // ----> This is a default constructor as it takes no parameters
+{
+    a = 10;
+    b = 0;
+    
+    }
+int main ()
+{
+   Complex c1;
+   c1.printNumber();
+   return 0;
+}
+
+
+
+
+//Parameterized Constructors 
+#include<iostream>
+using namespace std;
+
+
+class Complex
+{
+    int a, b;
+
+public:
+    Complex(int, int); // Constructor declaration
+
+    void printNumber()
+    {
+        cout << "Your number is " << a << " + " << b << "i" << endl;
+    }
+};
+
+Complex ::Complex(int x, int y) // ----> This is a parameterized constructor as it takes 2 parameters
+{
+    a = x;
+    b = y;
+}
+int main(){
+    // Implicit call
+    Complex a(4, 6);
+    a.printNumber();
+
+    // Explicit call
+    Complex b = Complex(5, 7);
+    b.printNumber();
+
+    return 0;
+}
+
+
+
+//constructor overloading
+
+#include <iostream>
+using namespace std;
+
+class Complex
+{
+    int a, b;
+
+public:
+    Complex(){
+        a = 0;
+        b =0;
+    }
+
+    Complex(int x, int y)
+    {
+        a = x; 
+        b = y;
+    }
+
+    Complex(int x){
+        a = x;
+        b = 0;
+    }
+    void printNumber()
+    {
+        cout << "Your number is " << a << " + " << b << "i" << endl;
+    }
+};
+int main()
+{
+    Complex c1(4, 6);
+    c1.printNumber();
+
+    Complex c2(5);
+    c2.printNumber();
+
+    Complex c3;
+    c3.printNumber();
+    return 0;
+}
+
+
+
+//creating a default constructor
+
+
+#include<iostream>
+using namespace std;
+class BankDeposit{
+    
+    public:
+        BankDeposit(){}  //     make a default constructor
+        BankDeposit(int p, int y, float r);
+        
+};
+
+
+// writing constructor in different format
+
+    int a;
+    int b;
+    Test(int i, int j) : a(i), b(j)
+    Test(int i, int j) : b(j), a(i+b)  // red flag because a will is declares first
+    Test(int i, int j) : a(i), b(a + j)
+
+
+
+//Decontructor
+
+#include<iostream>
+using namespace std;
+
+// Destructor never takes an argument nor does it return any value 
+int count=0;
+class num{
+    public:
+        num(){
+            count++;
+            cout<<"This is the time when constructor is called for object number"<<count<<endl;
+        }
+
+        ~num(){
+            cout<<"This is the time when my destructor is called for object number"<<count<<endl;
+            count--;
+        }
+};
+int main(){
+    cout<<"We are inside our main function"<<endl;
+    cout<<"Creating first object n1"<<endl;
+    num n1;
+    {
+        cout<<"Entering this block"<<endl;
+        cout<<"Creating two more objects"<<endl;
+        num n2, n3;
+        cout<<"Exiting this block"<<endl;
+    }
+    cout<<"Back to main"<<endl;
+    return 0;
+}
+
+
+// single inheritance  a to b
+// multiple  a to c and b to c 
+// hierarichal c to a and c to b
+// mutlilevel  a to b to C
+
+//hybrid - multiple , mutlilevel 
+ 
+// Derived Class syntax
+class {{derived-class-name}} : {{visibility-mode}} {{base-class-name}}
+{
+    class members/methods/etc...
+}
+
+
+//
+class Base
+{
+    int data1; // private by default and is not inheritable
+public:
+    int data2;
+    void setData();
+    int getData1();
+    int getData2();
+};
+
+void Base ::setData(void)
+{
+    data1 = 10;
+    data2 = 20;
+}
+
+int Base::getData1()
+{
+    return data1;
+}
+
+int Base::getData2()
+{
+    return data2;
+}
+class Derived : public Base
+{ 
+    // Class is being derived publically
+    int data3;
+
+public:
+    void process();
+    void display();
+};
+
+void Derived ::process()
+{
+    data3 = data2 * getData1();
+}
+
+void Derived ::display()
+{
+    cout << "Value of data 1 is " << getData1() << endl;
+    cout << "Value of data 2 is " << data2 << endl;
+    cout << "Value of data 3 is " << data3 << endl;
+}
+int main()
+{
+    Derived der;
+    der.setData();
+    der.process();
+    der.display();
+
+    return 0;
+}
+
+
+
+
+//Note:
+
+Default visibility mode is private
+Public Visibility Mode: Public members of the base class becomes Public members of the derived class
+Private Visibility Mode: Public members of the base class become private members of the derived class
+Private members are never inherited
+
+
+
+
+//                          Public Derivation      	    Private Derivation    	    Protected Derivation
+
+Private members           	Not Inherited              	Not Inherited              	Not Inherited              
+Protected members           Protected                   Private                     Protected                    
+Public members           	Public	                    Private                     Protected     
+
+
+
+
+// The syntax of inheriting multiple inheritances is shown below.
+class DerivedC: visibility-mode base1, visibility-mode base2
+{
+      Class body of class "DerivedC"
+};
+
+//constructor inheritance
+We can use constructors in derived classes in C++
+If the base class constructor does not have any arguments, there is no need for any constructor in the derived class
+But if there are one or more arguments in the base class constructor, derived class need to pass argument to the base class constructor
+If both base and derived classes have constructors, base class constructor is executed first
+
+
+// Ambiguity
+
+class Base1{
+    public:
+        void greet(){
+            cout<<"How are you?"<<endl;
+        }
+};
+
+class Base2{
+    public:
+        void greet()
+        {
+            cout << "Kaise ho?" << endl;
+        }
+};
+
+
+class Derived : public Base1, public Base2{
+   int a;
+   public: 
+    void greet(){
+        Base2 :: greet();
+    }
+};
+int main(){
+  // Ambibuity 1
+     Base1 base1obj;
+     Base2 base2obj;
+     base1obj.greet();
+     base2obj.greet();
+     Derived d;
+     d.greet();
+
+    return 0;
+}
+
+
+
+
+// Virtual base function
+
+                    A
+            B               C
+                    D
+
+A is getting inherited 2 times in D so here we use virtual base class 
+so class A will be virtual base class
+class B : virtual public A { };
+class C : virtual public A { };
+
+
+//New Keyword
+#include<iostream>
+using namespace std;
+
+int main(){
+    
+    float *p = new float(40.78);
+    cout << "The value at address p is " << *(p) << endl;
+    
+    return 0;
+}
+
+
+// Delete Keyword
+#include<iostream>
+using namespace std;
+
+int main(){
+  
+    int *arr = new int[3];
+    arr[0] = 10;
+    arr[1] = 20;
+    arr[2] = 30;
+    delete[] arr;
+    cout << "The value of arr[0] is " << arr[0] << endl;
+    cout << "The value of arr[1] is " << arr[1] << endl;
+    cout << "The value of arr[2] is " << arr[2] << endl;
+   
+    return 0;
+}
+
+
+
+// object and pointer
+
+int main(){
+    // Complex c1;
+    // Comlpex *ptr = &c1;
+           
+            OR
+    
+    //Complex *ptr = new Complex;
+
+
+    // (*ptr).setData(1, 54); 
+    // (*ptr).getData(); 
+    
+
+    ptr->setData(1, 54);
+    ptr->getData(); 
+
+    return 0;
+}
+
+
+
+// Array of Objects
+    Complex *ptr1 = new Complex[4]; 
+
+
+    or
+    Complex c1,c2;
+    Complex * ptr1[2];
+    ptr[0] = &c1;
+    ptr[1] = &c2;
+    ptr[0] -> display();
+    ptr[1] -> display();
+
+
+
+
+
+// This pointer
+
+#include<iostream>
+using namespace std;
+class A{
+    int a;
+    public:
+        void setData(int a){
+            this -> a = a;
+        }
+
+        void getData(){
+            cout<<"The value of a is "<<a<<endl;
+        }
+};
+int main(){
+    A b;
+    b.setData(4);
+    b.getData();
+    return 0;
+}
+
+
+// return this pointer
+    class A{
+    int a;
+    public:
+         A & setData(int a){
+            this->a = a;
+            return *this;
+        }
+
+        void getData(){
+            cout<<"The value of a is "<<a<<endl;
+        }
+};
+int main(){
+    A a;
+    a.setData(4).getData();
+    return 0;
+}
+
+
+
+
+
+// Compile Time Polymorphism
+Function Overloading
+Operator Overloading
+//Run Time Polymorphism
+Virtual Function
+
+
+
+
+
+
+// pointer to derived
+
+1. Pointer “base_class_pointer” of the base class is pointing to the object “obj_derived” of the derived class
+2. By using the pointer “base_class_pointer” of the base class we have set the value of the data member “var_base” by “34”. The main thing to note here is that we cannot set the value of the derived class data member by using the base class pointer otherwise the compiler will throw an error.
+3. The function “display” is called using a base class pointer. The main thing to note here is that the base class “display” function will run here.
+4. Again by using the pointer “base_class_pointer” of the base class we have set the value of the data member “var_base” by “3400” which will update the previous value and the function “display” is called.
+5. We created a pointer “derived_class_pointer” of the data type “DerivedClass”
+6. Pointer “Derived_class_pointer” of the derived class is pointing to the object “obj_derived” of the derived class
+7. By using pointer “Derived_class_pointer” of the derived class we have set the value of the data member “var_base” of the base class by “9448”. The main thing to note here is that this will not throw an error because we can set the value of base class data member by using derived class pointer but we cannot set the value of derived class data member by using base class pointer
+8. By using pointer “Derived_class_pointer” of the derived class we have set the value of the data member “var_derived” of the derived class by “98”.
+9. The function “display” is called using a derived class pointer. The main thing to note here is that the derived class “display” function will run here.
+
+#include<iostream>
+using namespace std;
+class BaseClass{
+    public:
+        int var_base;
+        void display(){
+            cout<<"Dispalying Base class variable var_base "<<var_base<<endl;
+        }
+};
+
+class DerivedClass : public BaseClass{
+    public:
+            int var_derived;
+            void display(){
+                cout<<"Dispalying Base class variable var_base "<<var_base<<endl;
+                cout<<"Dispalying Derived class variable var_derived "<<var_derived<<endl;
+            }
+};
+int main(){
+    BaseClass * base_class_pointer;
+    BaseClass obj_base;
+    DerivedClass obj_derived;
+    base_class_pointer = &obj_derived; // Pointing base class pointer to derived class
+
+    base_class_pointer->var_base = 34;
+    // base_class_pointer->var_derived= 134; // Will throw an error
+    base_class_pointer->display();
+
+    base_class_pointer->var_base = 3400; 
+    base_class_pointer->display();
+
+    DerivedClass * derived_class_pointer;
+    derived_class_pointer = &obj_derived;
+    derived_class_pointer->var_base = 9448;
+    derived_class_pointer->var_derived = 98;
+    derived_class_pointer->display();
+
+    return 0;
+}
+ 
+
+
+
+
+//virtual function
+
+1. The main thing to note here is that if we don’t use the “virtual” keyword with the “display” function of the base class then beside of the point that we have pointed our base call pointer to derived class object still the compiler would have called the “display” function of the base class because this is its default behavior as we have seen in the previous tutorial.
+
+2. But we have used the “virtual” keyword with the “display” function of the base class to make is virtual function so when the display function is called by using the base class pointer the display function of the derived class will run because the base class pointer is pointing to the derived class object.
+
+#include<iostream>
+using namespace std;
+
+class BaseClass{
+    public:
+        int var_base=1;
+        virtual void display(){
+            cout<<"1 Dispalying Base class variable var_base "<<var_base<<endl;
+        }
+};
+
+class DerivedClass : public BaseClass{
+    public:
+            int var_derived=2;
+            void display(){
+                cout<<"2 Dispalying Base class variable var_base "<<var_base<<endl;
+                cout<<"2 Dispalying Derived class variable var_derived "<<var_derived<<endl;
+            }
+};
+int main(){
+    BaseClass * base_class_pointer;
+    BaseClass obj_base;
+    DerivedClass obj_derived;
+
+    base_class_pointer = &obj_derived;
+    base_class_pointer->display();
+    return 0;
+}
+
+
+
+//Virtual Functions Example
+
+1. The class “CHW” has a virtual function void “display” which does nothing
+
+2. The main thing to note here is that if we don’t use the “virtual” keyword with the “display” function of the base class then the “display” function of the base class will run.
+
+3. But we have used the “virtual” keyword with the “display” function of the base class to make is a virtual function so when the display function is called by using the base class pointer the display function of the derived class will run because the base class pointer is pointing to the derived class object.
+
+class CWH{
+    protected:
+        string title;
+        float rating;
+    public:
+        CWH(string s, float r){
+            title =  s;
+            rating = r;
+        }
+        virtual void display(){}
+};
+class CWHVideo: public CWH
+{
+    float videoLength;
+    public:
+        CWHVideo(string s, float r, float vl): CWH(s, r){
+            videoLength = vl;
+        }
+        void display(){
+            cout<<"This is an amazing video with title "<<title<<endl;
+            cout<<"Ratings: "<<rating<<" out of 5 stars"<<endl;
+            cout<<"Length of this video is: "<<videoLength<<" minutes"<<endl;
+        }
+};    
+class CWHText: public CWH
+{
+    int words;
+    public:
+        CWHText(string s, float r, int wc): CWH(s, r){
+            words = wc;
+        }
+     void display(){
+      cout<<"This is an amazing text tutorial with title "<<title<<endl;
+      cout<<"Ratings of this text tutorial: "<<rating<<" out of 5 stars"<<endl;
+      cout<<"No of words in this text tutorial is: "<<words<<" words"<<endl;
+         }
+};
+int main(){
+    string title;
+    float rating, vlen;
+    int words;
+
+    // for Code With Harry Video
+    title = "Django tutorial";
+    vlen = 4.56;
+    rating = 4.89;
+    CWHVideo djVideo(title, rating, vlen);
+
+    // for Code With Harry Text
+    title = "Django tutorial Text";
+    words = 433;
+    rating = 4.19;
+    CWHText djText(title, rating, words);
+
+    CWH* tuts[2];
+    tuts[0] = &djVideo;
+    tuts[1] = &djText;
+
+    tuts[0]->display();
+    tuts[1]->display();
+
+    return 0;
+}
+
+
+
+// Rules for virtual functions
+
+1. They cannot be static
+2. They are accessed by object pointers
+3. Virtual functions can be a friend of another class
+4. A virtual function in the base class might not be used.
+5. If a virtual function is defined in a base class, there is no necessity of redefining it in the derived class
+
+
+//
+1. Pure Virtual Functions in C++ - Pure virtual function is a function that doesn’t perform any operation and the function is declared by assigning the value 0 to it. Pure virtual functions are declared in abstract classes.
+
+2. Abstract Base Class in C++ - Abstract base class is a class that has at least one pure virtual function in its body. The classes which are inheriting the base class must need to override the virtual function of the abstract class otherwise compiler will throw an error.
+
+3. only relpace this in upper code to create abstract class / pure virtual function
+
+class CWH{
+    protected:
+        string title;
+        float rating;
+    public: 
+        CWH(string s, float r){
+            title =  s;
+            rating = r;
+        }
+        virtual void display()=0;
+};
+
+
+
+
+
+// File I/o
+#include<iostream>
+#include<fstream>
+
+using namespace std;
+
+int main(){
+    string st = "Likhit";
+    // Opening files using constructor and writing it 
+    ofstream a_out("sample60.txt");   // it will open a new file sample60 and write likhit
+    a_out<<st;
+
+    return 0;
+}
+
+
+
+#include<iostream>
+#include<fstream>
+
+using namespace std;
+
+int main(){
+    string st2;
+    // Opening files using constructor and reading it
+    ifstream in_a("sample60.txt"); // Read operation
+    //in_a>>st2;
+    getline(in_a, st2);  
+    cout<<st2;
+
+    return 0;
+}
+
+
+//File I/o
+#include<iostream>
+#include<fstream>
+ 
+using namespace std;
+ 
+int main(){
+ 
+ofstream hout("sample60.txt");
+string name;
+cout<<"Enter your name: ";
+cin>>name;
+hout<<name + " is my name";
+hout.close();
+ifstream hin("sample60.txt");
+string content;
+hin>>content;
+cout<<"The content of the file is: "<<content;
+hin.close();
+return 0;
+}
+
+
+// File I/o
+ofstream out;
+out.open("sample60.txt");
+out <<"This is me\n";
+out <<"This is also me"
+out.close();
+
+// File I/o
+
+ifstream in;
+string st;
+in.open("sample60.txt");
+ // giving output the string lines by storing in st until the file reaches the end of it
+    while (in.eof()==0) 
+    {
+        // using getline to fill the whole line in st
+        getline(in,st);
+        cout<<st<<endl;
+    }
+
+
+
+// Check the File for Errors  - Syntax         if (!my_file) {...}
+
+ofstream my_file("example.txt");
+    // check if the file has been opened properly
+if (!my_file) {
+
+    // print error message
+    cout << "Error opening the file." << endl;
+
+    // terminate the main() function
+    return 1;
+}
+
+
+
+
+
+
+
+//Template - notes remain to copy from code with harry playlist
+
+

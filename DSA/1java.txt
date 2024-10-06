@@ -1,0 +1,300 @@
+//Boilerplate code
+    public class test {
+        public static void main(String args[]) {
+            System.out.println("Hello");
+            System.out.print("Hello");
+        }
+    }
+
+// println, "\n"  -  is used for new line
+
+// variable  -  int a , char ch = 'a', boolean var = true or false, float/long/double 
+// comments in java -  // or /*    */
+
+
+//  input boiler
+    import java.util.*;
+    public class test {
+        public static void main(String args[]) {
+            Scanner sc = new Scanner (System.in);
+            
+
+
+            String input = sc.next();
+            System.out.println(input);
+        }
+    }
+
+    
+// next()- one word
+// nextLine()  - whole line 
+// nextInt(), nextFloat()
+
+// byte -> short -> int -> float -> long -> double
+// int marks = (int) (99.999f)    //type cast by it we can convert any type into any type
+// character to numver is possible  - type conversion
+
+//Type promotion - 
+1. Java automatically promotes each byte, short, or char operandto int 
+2. If one operand long, float or double the whole expression is promoted to long, float, or double respectively. |
+
+Example 1 - 
+        char a = 'a';
+        char b = 'b';
+        char c =  a - b;            //error int c 
+        System.out.println((int)(b));
+        System.out.println((int)(a));
+        System.out.println(a);
+        System.out.println(b-a);             // int 
+
+Example 2 -     
+        int a = 10;
+        float b = 20.25f;
+        long c = 25;
+        double d = 30;
+        //int ans = a +b +c +d;      //error
+        //double ans = a +b +c +d;
+        System.out.println(ans);
+
+Example 3 -  
+        byte b = 5;
+        //byte a = (b * 2);             //error
+        //byte a = (byte) (b * 2);
+        System.out.println(a);
+
+
+//++a - pre ,  a++ post
+
+
+// Ternary operator  -    variable = condition? statement1 : statement2; 
+
+// Switch(variable){
+    case1:
+    case2:
+    default:
+}
+
+
+
+
+
+// continue keyword
+
+
+//  char likhit = 'A';
+    likhit ++
+
+
+
+
+//      returntype name(type param1, type param2) {
+            //body
+            return statement;
+        }
+
+ 
+// In java in function always call by value is used which means that whenever we pass value let say a = 5 in a function and perform some operations then the final value of same variable will not reflect in main function it will be unchanged
+
+//Mutable data types are those whose values can be modified after they are created, while immutable data types are those whose values cannot be modified once created.
+
+ 
+
+// Bitwise AND   -      5 & 6 
+// Bitwise OR    -      5 | 6 
+// Bitwise XOR    -     5 ^ 6 
+// Bitwise NOT    -     ~5      
+Ex ->  ~0 = -1        
+// if msb is 0 number is +ve and if 1 number is -ve                          - most signifiacnt bit
+// LSB - right bit              ,  MSB - left bit
+
+//for calculating -ve number decimal value we take 2's complement
+
+//Binary left shift   <<   -  a<<b = a * 2ᵇ
+//Binary right shift  >>  -  a>>b = a / 2ᵇ
+ 
+// LSB - odd - 1    , LSB - even - 0
+// odd and even -> n & 1  ==    // and of 1 with the number == if 0(even) if 1(odd)
+// getting i position bit ->  n & (1 << i)              //right to left starting count from 0 of i
+// setting i position bit ->  n | (1 << i)              // 1
+// clearing i position bit ->  n & ~(1 << i)            // 0
+// clearing last i bits -> n & ((~0)<<i)
+
+
+// -1 = ~0 = 1111111111111111111 
+
+
+
+
+
+
+
+// Class and object
+
+-> This keyword - this keyword is used to refer to the current object
+Ex -    public void setAge(int age){
+            this.age = age;
+        }
+
+-> Encapsulation(access modifiers) is defined as the wrapping up of data & methods under a single unit. It also implements data hiding.
+-> Constructor is a special method which is invoked automatically at the time of object creation. |
+        - Constructors have the same name as class or structure. 
+        - Constructors don’t have a return type. (Not even void)
+        - Constructors are only called once, at object creation. 
+        - Memory allocation happens when constructor is called. 
+
+->  In java we have garbage collector we don't write destructor
+
+
+//Inheritance
+
+Ex -    class Animal{   
+
+        }
+
+        class Mammal extends Animal {
+
+        }
+
+Ex(object making) - Mammal a = new Mammal();  -> parent class constuctor is called first(Animal) then Mammal constructor will be called
+
+
+
+//Polymorphism
+- Compile Time Polymorphism - Method Overloading - static - Multiple functions with the same name but different parameters
+- Run Time Polymorphism - Method Overriding - dynamic - Parent and child classes both contain the same function with a different definition and in this case child class function will get execute
+
+//Package is a group of similar types of classes, interfaces and sub-packages.
+//Abstraction - Hiding all the unnecessary details and showing only the important parts to the user. - Abstract Classes & Interfaces
+    -> Abstract Class
+            - Cannot create an object of abstract class 
+            - Can create a object of child class 
+            - Can have abstract/non-abstract functions
+            - Can have constructors
+
+Ex-     abstract class Animal{
+            void eat(){
+                System.out.println("eating");
+            }
+            abstract void walk();                    //abstract function
+        } 
+        class Dog extends Animal{
+            void walk(){
+                System.out.println("walking");
+            }
+        }
+
+-> We can have nested class also 
+
+// Interface is a blueprint of a class.
+        - Multiple Inheritance
+        - Total Abstraction (no non-abstract functions)
+        - All methods are public, abstract & without implementation
+        - Used to achieve total abstraction
+        - Variables in the interface are final, public and static
+
+
+
+//Interface - implements and class - extends
+
+//Multiple Inheritance - 
+        interface Herbivore {
+
+        }
+        interface Carnivore { 
+
+        }
+        class Bear implements Herbivore, Carnivore {
+            
+        }
+
+
+
+// Recursion - For factorial - f(n) = n * f(n-1)
+    -> Stack overflow - when no base class condition is mentioned and many functions are called.
+Ex -    if (n == 1) {                             //Base case it is neccesarry for preventing stack overflow
+            System.out.println(1);
+            return;
+        }
+        System.out.print(n + " ");
+        printDec(n - 1);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

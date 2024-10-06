@@ -1,0 +1,28 @@
+public class OuterClass {
+    // A static nested class inside OuterClass
+    static class StaticNestedClass {
+        void sayHello() {
+            System.out.println("Hello from StaticNestedClass!");
+        }
+    }
+
+    // A regular inner class inside OuterClass
+    class InnerClass {
+        void sayHello() {
+            System.out.println("Hello from InnerClass!");
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating an object of the static nested class
+        OuterClass.StaticNestedClass nested = new OuterClass.StaticNestedClass();
+        nested.sayHello();  // Output: Hello from StaticNestedClass!
+
+        // Creating an object of the non-static inner class
+        OuterClass outer = new OuterClass(); // Need an instance of OuterClass first
+        OuterClass.InnerClass inner = outer.new InnerClass();
+        inner.sayHello();  // Output: Hello from InnerClass!
+    }
+}
