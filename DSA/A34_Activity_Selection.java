@@ -1,6 +1,7 @@
-import java.util.*;
+//Greedy Algorithm
+//Sorting on basis of end time
 
-//sorting on basis of end time
+import java.util.*;
 public class A34_Activity_Selection {
 
     // Without Sorting - O(n)
