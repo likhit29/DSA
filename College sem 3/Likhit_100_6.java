@@ -115,7 +115,7 @@ public class Likhit_100_6 {
     }
 
     public void empty() {
-        Node temp = head;
+        //Node temp = head;
         while (size > 0) {
             removeFirst();
         }

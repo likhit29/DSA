@@ -21,7 +21,7 @@ B-2
 
 */
 
-import java.util.*;
+import java.util.Scanner;
 
 public class Likhit_100_4 {
     public class Node {

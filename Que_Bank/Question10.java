@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.Scanner;
 public class Question10 {
     public static void print(int Arr[],int n){
         for(int i = 0; i < n;i++){

@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class Question9 {
     public static void Sort(int Arr[], int n){

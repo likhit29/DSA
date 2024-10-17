@@ -1,6 +1,8 @@
-//Lowest Common Ancestor - First Common ancestor from bottom to top
- 
-public class aa{
+//Print all Nodes of kth level
+//We can also do this by using level order traversal
+
+
+public class A37_Print_Kth_level_nodes{
     
     static class Node{
         int data;
@@ -14,6 +16,17 @@ public class aa{
     }
 
 
+    public static void Klevel(Node root, int level, int k){
+        if(root == null){
+            return;
+        }
+        if(level == k){
+            System.out.println(root.data + " ");
+            return;
+        }
+        Klevel(root.left, level+1, k);
+        Klevel(root.right, level+1, k);
+    }
 
     public static void main(String[] args) {
   
@@ -33,7 +46,8 @@ public class aa{
     root.left.right = new Node(5);
     root.right.left = new Node(6);
     root.right.right = new Node(7);
-
+    int k = 3;
+    Klevel(root, 1, k);
 
     }
 } 

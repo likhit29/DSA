@@ -13,7 +13,7 @@ Assignment 7 - Implement a browser history management system using a stack data 
 7. Print History
 
 */
-import java.util.*;
+import java.util.Scanner;
 
 public class Likhit_100_7 {
     public class Node {

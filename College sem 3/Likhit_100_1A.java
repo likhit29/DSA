@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class Likhit_100_1A {
     static class Student {
