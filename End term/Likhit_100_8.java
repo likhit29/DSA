@@ -21,12 +21,11 @@ public class Likhit_100_8 {
             char c = s1.charAt(i);
 
             if (Character.isLetterOrDigit(c)) {
-                while (i < s1.length() && Character.isDigit(s1.charAt(i))) {
-                    result.append(s1.charAt(i));
-                    i++;
-                }
+                
+                    result.append(c);
+      
                 result.append(' '); 
-                i--; 
+ 
             }
             
             else if (c == '(') {
@@ -57,7 +56,6 @@ public class Likhit_100_8 {
 
     public static int evaluatePostfix(String postfix) {
         Stack<Integer> stack = new Stack<>();
-        StringBuilder t = new StringBuilder();
 
         for (int i = 0; i < postfix.length(); i++) {
             char c = postfix.charAt(i);
@@ -66,13 +64,8 @@ public class Likhit_100_8 {
                 continue;
             }
             else if (Character.isDigit(c)) {
-                t.setLength(0);
-                while (i < postfix.length() && Character.isDigit(postfix.charAt(i))) {
-                    t.append(postfix.charAt(i));
-                    i++;
-                }
-                i--;
-                stack.push(Integer.parseInt(t.toString())); 
+   
+                stack.push(c - '0'); 
             } 
             else {
                 int op2 = stack.pop(); 

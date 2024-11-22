@@ -1,120 +1,104 @@
-//Likhit Chaudhary
-//123B1B100
-//Assignment 11 
-//Consider an employee database of N employees. Make use of a hash table implementation to quickly look up the employer's id number.
+import java.util.LinkedList;
 
-import java.util.Scanner;
+public class Likhit_100_11<K, V> {
 
-class Employee {
-    int id;
-    String name;
+    private class Node {
+        K key;
+        V value;
 
-    public Employee(int id, String name) {
-        this.id = id;
-        this.name = name;
+        public Node(K key, V value) {
+            this.key = key;
+            this.value = value;
+        }
     }
 
-    public String toString() {
-        return "ID: " + id + ", Name: " + name;
+    private LinkedList<Node>[] buckets;
+    private int N; // Number of buckets
+
+    @SuppressWarnings("unchecked")
+    public Likhit_100_11(int size) {
+        this.N = size; // Set the number of buckets
+        this.buckets = new LinkedList[N];
+        for (int i = 0; i < N; i++) {
+            this.buckets[i] = new LinkedList<>();
+        }
     }
-}
 
-public class Likhit_100_11 {
+    // Hash function to compute bucket index
+    private int hashFunction(K key) {
+        int hashCode = key.hashCode();
+        return Math.abs(hashCode) % N;
+    }
 
-    static class HashTable {
-        private Employee[] table;
+    // Add or update a key-value pair
+    public void put(K key, V value) {
+        int bucketIndex = hashFunction(key);
+        LinkedList<Node> bucket = buckets[bucketIndex];
 
-        public HashTable(int size) {
-            table = new Employee[size];
-        }
-
-        private int hashFunction(int id) {
-            return id % table.length;
-        }
-
-        public void insert(int id, String name) {
-            int index = hashFunction(id);
-            while (table[index] != null) {
-                index = (index + 1) % table.length;
+        // Check if key already exists
+        for (Node node : bucket) {
+            if (node.key.equals(key)) {
+                node.value = value; // Update value
+                return;
             }
-            table[index] = new Employee(id, name);
-            System.out.println("Inserted: " + name);
         }
 
-        public void delete(int id) {
-            int index = hashFunction(id);
-            while (table[index] != null) {
-                if (table[index].id == id) {
-                    System.out.println("Deleted: " + table[index].name);
-                    table[index] = null;
-                    return;
-                }
-                index = (index + 1) % table.length;
+        // Add new key-value pair
+        bucket.add(new Node(key, value));
+    }
+
+    // Retrieve a value for a given key
+    public V get(K key) {
+        int bucketIndex = hashFunction(key);
+        LinkedList<Node> bucket = buckets[bucketIndex];
+
+        for (Node node : bucket) {
+            if (node.key.equals(key)) {
+                return node.value; // Key found
             }
-            System.out.println("Employee not found!");
         }
 
-        public void search(int id) {
-            int index = hashFunction(id);
-            while (table[index] != null) {
-                if (table[index].id == id) {
-                    System.out.println("Found: " + table[index]);
-                    return;
-                }
-                index = (index + 1) % table.length;
+        return null; // Key not found
+    }
+
+    // Remove a key-value pair
+    public V remove(K key) {
+        int bucketIndex = hashFunction(key);
+        LinkedList<Node> bucket = buckets[bucketIndex];
+
+        for (Node node : bucket) {
+            if (node.key.equals(key)) {
+                bucket.remove(node); // Remove key-value pair
+                return node.value;
             }
-            System.out.println("Employee not found!");
         }
 
-        public void display() {
-            System.out.println("Employees in the Hash Table:");
-            for (int i = 0; i < table.length; i++) {
-                if (table[i] != null) {
-                    System.out.println("Index " + i + ": " + table[i]);
-                }
+        return null; // Key not found
+    }
+
+    // Print all key-value pairs
+    public void printAll() {
+        for (int i = 0; i < buckets.length; i++) {
+            System.out.print("Bucket " + i + ": ");
+            for (Node node : buckets[i]) {
+                System.out.print("{" + node.key + "=" + node.value + "} ");
             }
+            System.out.println();
         }
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        HashTable ht = new HashTable(5);
+        Likhit_100_11<String, Integer> map = new Likhit_100_11<>(4);
 
-        while (true) {
-            System.out.println("\nMenu:");
-            System.out.println("1. Insert Employee");
-            System.out.println("2. Delete Employee");
-            System.out.println("3. Search Employee");
-            System.out.println("4. Display Employees");
-            System.out.println("5. Exit");
-            System.out.print("Choose an option: ");
-            int choice = scanner.nextInt();
+        map.put("India", 100);
+        map.put("China", 200);
+        map.put("USA", 300);
+        map.put("Japan", 400);
 
-            if (choice == 1) {
-                System.out.print("Enter Employee ID: ");
-                int id = scanner.nextInt();
-                System.out.print("Enter Employee Name: ");
-                scanner.nextLine(); // consume newline
-                String name = scanner.nextLine();
-                ht.insert(id, name);
-            } else if (choice == 2) {
-                System.out.print("Enter Employee ID to delete: ");
-                int id = scanner.nextInt();
-                ht.delete(id);
-            } else if (choice == 3) {
-                System.out.print("Enter Employee ID to search: ");
-                int id = scanner.nextInt();
-                ht.search(id);
-            } else if (choice == 4) {
-                ht.display();
-            } else if (choice == 5) {
-                System.out.println("Exiting...");
-                break;
-            } else {
-                System.out.println("Invalid choice. Please try again.");
-            }
-        }
+        map.printAll();
 
-        scanner.close();
+        //System.out.println("Get value for 'India': " + map.get("India"));
+        //System.out.println("Remove 'China': " + map.remove("China"));
+        //map.printAll();
     }
 }

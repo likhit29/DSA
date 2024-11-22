@@ -7,18 +7,19 @@ public class A25_Shell_sort {
         for (int gap = n / 2; gap > 0; gap /= 2) {
             // Perform gapped insertion sort for this gap size.
             for (int i = gap; i < n; i++) {
-                // Save arr[i] in temp and make a hole at position i
-                int temp = arr[i];
+                // Save arr[i] in key and make a hole at position i
+                int key = arr[i];
                                                                                            
                 // Shift earlier gap-sorted elements up until the correct location
                 // for arr[i] is found
-                int j;
-                for (j = i; j >= gap && arr[j - gap] > temp; j -= gap) {
+                int j = i;
+                while (j >= gap && arr[j - gap] > key ) {
                     arr[j] = arr[j - gap];
+                    j -= gap;
                 }
                 
-                // Put temp (the original arr[i]) in its correct location
-                arr[j] = temp;
+                // Put key (the original arr[i]) in its correct location
+                arr[j] = key;
             }
         }
     }

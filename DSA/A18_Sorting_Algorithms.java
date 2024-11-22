@@ -53,14 +53,14 @@ public class A18_Sorting_Algorithms {
     public static void insertionSort(int arr[]) {
         for (int i = 1; i < arr.length; i++) {
             int key = arr[i];
-            int prev = i - 1;
+            int j = i - 1;
             // finding out the correct pos to insert
-            while (prev >= 0 && arr[prev] > key) {
-            arr[prev + 1] = arr[prev];
-             prev--;                                            //to exit while loop every time(-1)
+            while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+             j--;                                            //to exit while loop every time(-1)
             }
             // insertion
-            arr[prev + 1] = key;
+            arr[j + 1] = key;
         }
     }
 
