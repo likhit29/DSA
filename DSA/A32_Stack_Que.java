@@ -10,28 +10,20 @@ public class A32_Stack_Que {
             char ch = c.charAt(i);
             if (ch == '{' || ch == '(' || ch == '[') {
                 s.push(ch);
-            }
-
-            else {
+            } else if (ch == '}' || ch == ')' || ch == ']') {
                 if (s.isEmpty()) {
-                    return false;
+                    return false; 
                 }
-                if ((s.peek() == '(' && ch == ')')
-                        || s.peek() == '{' && ch == '}'
-                        || s.peek() == '[' && ch == ']') {
+                if ((s.peek() == '(' && ch == ')') ||
+                        (s.peek() == '{' && ch == '}') ||
+                        (s.peek() == '[' && ch == ']')) {
                     s.pop();
                 } else {
-                    return false;
+                    return false; 
                 }
-
             }
         }
-        if (s.isEmpty()) {
-            return true;
-        } else {
-            return false;
-        }
-
+        return s.isEmpty(); 
     }
 
     public static boolean Dulicate_Parenteses() {// O(n)
@@ -105,7 +97,7 @@ public class A32_Stack_Que {
     public static void main(String[] args) {
         // System.out.println(Valid_Parenteses());
         // System.out.println(Dulicate_Parenteses());
-        
+
         int arr[] = { 2, 1, 5, 6, 2, 3 };
         Histogram(arr);
 

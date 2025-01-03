@@ -1,0 +1,34 @@
+Stack -
+
+
+ plaindrome
+ reverse
+ parenthesized 
+ implement two stacks using a single array
+ reverse a Stack using recursion
+
+
+
+
+sorting - pactical, all 5 revise
+queue framework = add,remove,peek, size
+
+
+
+
+middle element
+
+
+
+ Queue - 
+ queue using array
+ reverse a queue using recursion - chavan
+ concatenate two linear queues.
+ 
+
+ stack using queue
+ merge two or more Queues into one with efficient Dequeuing
+ second highest element of a queue
+ priority queue 
+ circular queue 
+ queue using stack

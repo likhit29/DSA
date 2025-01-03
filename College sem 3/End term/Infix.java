@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.Stack;
 
-public class Likhit_100_8 {
+public class Infix {
  
     static int precedence(char c) {
         if (c == '+' || c == '-') {

@@ -35,19 +35,15 @@ public class A31_Stack_QUE {
 
     // Reverse a stringggg using stack
     public static String reverseString(String str) {
-        Stack<Character> s = new Stack<>(); // Create a stack to hold characters
-        // Push each character of the string onto the stack
+        Stack<Character> s = new Stack<>(); 
         for (int idx = 0; idx < str.length(); idx++) {
             s.push(str.charAt(idx));
         }
-        // Create a StringBuilder to store the reversed string
         StringBuilder result = new StringBuilder();
-        // Pop characters from the stack and append to the result
         while (!s.isEmpty()) {
             char curr = s.pop();
             result.append(curr);
         }
-        // Convert StringBuilder to string and return the result
         return result.toString();
     }
 
