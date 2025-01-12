@@ -1,0 +1,14 @@
+SQL - Relational Database - data stored in database - eg MySQL, Orcale, PostgreSQL
+NoSQL - Non Relational Database - data stored in document - eg MongoDb
+
+Columns - design  - schema
+rows - tuple
+
+SQL is not case sensitive
+
+
+
+
+
+
+

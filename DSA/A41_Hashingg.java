@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 
 public class A41_Hashingg {
@@ -73,23 +73,23 @@ public class A41_Hashingg {
         return 0;
     }
 
-    public ArrayList keys() {
-        ArrayList<String> allKeys = new ArrayList<>();
-        for (int i = 0; i < dataMap.length; i++) {
-            Node temp = dataMap[i];
-            while (temp != null) {
-                allKeys.add(temp.key);
-                temp = temp.next;
-            }
-        }
-        return allKeys;
-    }
+    // public ArrayList keys() {
+    //     ArrayList<String> allKeys = new ArrayList<>();
+    //     for (int i = 0; i < dataMap.length; i++) {
+    //         Node temp = dataMap[i];
+    //         while (temp != null) {
+    //             allKeys.add(temp.key);
+    //             temp = temp.next;
+    //         }
+    //     }
+    //     return allKeys;
+    // }
     public static void main(String[] args) {
         A41_Hashingg o = new A41_Hashingg();
         o.set("dw", 5);
         o.set("dwqs",60);
         o.printTable();
-        o.keys();
+        //o.keys();
     }
 }
 

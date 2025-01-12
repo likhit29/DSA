@@ -14,7 +14,7 @@ number, boolean, string, undefined, null, bignit, symbol
 // ()  -   **   -   *,/,%   -   +,-      
   for same level (eg *,/,% ) we will be goin left to right in equation
 
-// let is a keyword for drclaring variable
+// let is a keyword for declaring variable
     let a = 3;
 
 //const - values of this variable cannot be changed in program
@@ -104,7 +104,7 @@ null == defined - false
 //prompt("     ");          - used to take input
 
 
-// methods - actipons that can be pefromed on objects      -      stringname.method()      
+// methods - actions that can be perfomed on objects      -      stringname.method()      
 
     stringname.trim()  - used to remove space from start and end not from between the string characters
 
@@ -652,11 +652,96 @@ Ex  -   const student = {
 
 
 
+DOM
+
 
 
 //console.dir(document);
 
 
+document.all[8].innerText
+
+Selecting Elements by Id
+getElementById - Returns the Element as an object or null if not found
+getElementByClassName
+let abc = document.getElementsByTagName("p")[1].innerText
+
+
+Query Selector - used to select any element by tag, class, Id
+document.querySelector('p')                 // Selects only first p element
+document.querySelector('#myId')             // Selects first element with this id
+document.querySelector('.myclass')
+
+let para = document.querySelectorAll('p')              // Selects all p elements
+
+
+para.innerText - Shows the visible text contained in a node
+para.textContent - Shows all the full text
+para.innerHTML - Shows the full markup   
+
+
+
+# Mainpulating Attributes - id, class, style
+Ex- Atrribute of image  =  src
+obj.getAttribute(attr)
+obj.setAttribute(attr , val)                    //can be used to set value for only 1 class 
+
+Ex - 
+let img = document.querySelector('img');
+img.getAttribute('src');
+img.setAttribute('src', "creation_3.jpeg")
+
+
+
+# Mainpulating style  -  it can Mainpulate only style written in HTML not in CSS
+Ex - 
+let heading = document.querySelector("h1");
+heading.style;
+heading.style.color = 'blue';                   //change the color to blue
+
+
+# using classList
+
+classList.add() - to add new classes
+classList.remove() - to remove classes
+classList.contains() - to check if class exists
+classList.toggle() - to toggle between add & remove of a class
+
+Ex - 
+let heading = document.querySelector("h1");
+heading.classList;
+heading.classList.add("myClass"); 
+
+
+# Navigation on page
+Ex - 
+let ul = document.querySelector('ul');
+ul.parentElement;
+ul.children;
+ul.childElementCount;
+ul.previousElementSibling;
+ul.nextElementSibling;
+
+
+#Adding elements
+document.createElement('  ')
+appendChild(element)
+append(element)                     //also used for string and text
+prepend(element)
+insertAdjacent(where, element)          //read MDM of it
+
+
+Ex - 
+let newp = document.createElement('p');
+newp.innerText = "Hi, I am a new p";
+let body = document.querySelector('body');
+body.appendChild(newp)
+newp.append("this is added text")
+
+
+#Removing elements
+removeChild(element)
+remove(element)
 
 
 
@@ -665,78 +750,50 @@ Ex  -   const student = {
 
 
 
+//DOM Events - can be udes for button, para, ..........
+
+1. write in html code
+<button onclick = "alert('button was clicked')"> click me </button>
+
+
+2. in js
+Ex - 
+let btns = document.querySelector("button");
+
+for(btn of btns){
+    btn.onclick = sayHello;
+    btn.onmouseenter = function () {
+        console.log("you entered a button);
+    };
+    console.dir(btn);
+}
+
+function sayHello() {
+    alert("Hello");
+}
+
+
+3. event = "click", ...............
+    element.addEventListener(event, function_callback)
+
+4. use of this
+
+Ex - 
+btn.addEventListener(event, function () {
+    alert("Hello");
+    console.dir(this.innerText);
+    this.style.backgroundcolor = "blue";
+});
 
 
 
+28      keyboarrd event se bacha hai
 
 
 
+even.stopPropagation();             //use to prevent event bubbling
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                                                        
-
-
-
-11 baje - wake up
-12 baje - naha do liya
-1 baje - kahan kha liye
-1 - 4     -   class
-4-6     - niche aaja
-10 baje tak timepass
-10 - 4        -        
- freinds, 
-                                                   
-                                          
-
-                                                 
-                                            
-                                                      
-                                     
-                                    
-                          
-
-
-
-
+29 repeat
 
 
 
