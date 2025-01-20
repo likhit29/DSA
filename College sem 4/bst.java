@@ -60,6 +60,10 @@ public class bst {
             search(root.right, w); 
         }
     }
+
+    public void delete(){
+        
+    }
     
 
     public static void main(String[] args){

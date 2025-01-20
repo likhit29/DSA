@@ -1,39 +1,20 @@
-//Lowest Common Ancestor - First Common ancestor from bottom to top
+/*
+Priority Queue in Javaframework - add() -> O(logn), remove() -> O(logn), peek() -> O(1)
+
+PriorityQueue<Integer> pq = new PriorityQueue<>();
+1 has highest priority - lesser the number higher the priority
+
+
+
+
+*/
+
+
+
+// difference in solving using arraylist and array
  
-public class aa{
-    
-    static class Node{
-        int data;
-        Node left;
-        Node right;
-        Node(int data){
-            this.data = data;
-            this.left = null;
-            this.right = null;
-        }
-    }
 
 
 
-    public static void main(String[] args) {
-  
-    /*
-    Binary tree
-            1
-           / \
-          2   3
-         / \ / \
-        4  5 6  7
-
-    */
-    Node root = new Node(1);
-    root.left = new Node(2);
-    root.right = new Node(3);
-    root.left.left = new Node(4);
-    root.left.right = new Node(5);
-    root.right.left = new Node(6);
-    root.right.right = new Node(7);
 
 
-    }
-} 

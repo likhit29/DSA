@@ -1,0 +1,406 @@
+<html>
+ <head>
+  <title>
+   Doctor Profiles
+  </title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        .search-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .search-bar input {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .search-bar button {
+            background-color: #ff7f27;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .doctor-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .doctor-card img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+        .doctor-card h3 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .doctor-card p {
+            color: #777;
+            margin: 5px 0 15px;
+        }
+        .doctor-card .divider {
+            width: 50px;
+            height: 2px;
+            background-color: #800000;
+            margin: 0 auto 15px;
+        }
+        .doctor-card button {
+            background-color: #800000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .doctor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .profile-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .profile-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+        }
+        .profile-content img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+        .profile-content h3 {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+        .profile-content p {
+            color: #777;
+            margin: 5px 0 15px;
+        }
+        .profile-content .divider {
+            width: 50px;
+            height: 2px;
+            background-color: #800000;
+            margin: 0 auto 15px;
+        }
+        .profile-content button {
+            background-color: #800000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+  </style>
+ </head>
+ <body>
+  <div class="container">
+   <div class="search-bar">
+    <input id="searchInput" onkeyup="filterDoctors()" placeholder="Find a doctor by doctor's name or specialty" type="text"/>
+    <button>
+     <i class="fas fa-filter">
+     </i>
+     FILTER
+    </button>
+   </div>
+   <div class="title">
+    Showing All Doctors
+   </div>
+   <div class="doctor-grid" id="doctorGrid">
+    <div class="doctor-card" data-name="Dr. (Major) Kumar Raushan">
+     <img alt="Portrait of Dr. (Major) Kumar Raushan" src="https://placehold.co/100x100"/>
+     <h3>
+      Dr. (Major) Kumar Raushan
+     </h3>
+     <p>
+      Clinical Associate
+     </p>
+     <div class="divider">
+     </div>
+     <button onclick="viewProfile('Dr. (Major) Kumar Raushan', 'Clinical Associate', 'https://placehold.co/150x150')">
+      View Profile
+     </button>
+    </div>
+    <div class="doctor-card" data-name="Dr. Aarti Chunnilal Baghele">
+     <img alt="Portrait of Dr. Aarti Chunnilal Baghele" src="https://placehold.co/100x100"/>
+     <h3>
+      Dr. Aarti Chunnilal Baghele
+     </h3>
+     <p>
+      Associate Consultant
+     </p>
+     <div class="divider">
+     </div>
+     <button onclick="viewProfile('Dr. Aarti Chunnilal Baghele', 'Associate Consultant', 'https://placehold.co/150x150')">
+      View Profile
+     </button>
+    </div>
+    <div class="doctor-card" data-name="Dr. Abhijeet Dinesh Lonari">
+     <img alt="Portrait of Dr. Abhijeet Dinesh Lonari" src="https://placehold.co/100x100"/>
+     <h3>
+      Dr. Abhijeet Dinesh Lonari
+     </h3>
+     <p>
+      Consultant
+     </p>
+     <div class="divider">
+     </div>
+     <button onclick="viewProfile('Dr. Abhijeet Dinesh Lonari', 'Consultant', 'https://placehold.co/150x150')">
+      View Profile
+     </button>
+    </div>
+    <div class="doctor-card" data-name="Dr. Abhijeet Karad">
+     <img alt="Portrait of Dr. Abhijeet Karad" src="https://placehold.co/100x100"/>
+     <h3>
+      Dr. Abhijeet Karad
+     </h3>
+     <p>
+      Consultant
+     </p>
+     <div class="divider">
+     </div>
+     <button onclick="viewProfile('Dr. Abhijeet Karad', 'Consultant', 'https://placehold.co/150x150')">
+      View Profile
+     </button>
+    </div>
+    <div class="doctor-card" data-name="Dr. Abhijit Shivdas Thakur">
+     <img alt="Portrait of Dr. Abhijit Shivdas Thakur" src="https://placehold.co/100x100"/>
+     <h3>
+      Dr. Abhijit Shivdas Thakur
+     </h3>
+     <p>
+      Junior Consultant
+     </p>
+     <div class="divider">
+     </div>
+     <button onclick="viewProfile('Dr. Abhijit Shivdas Thakur', 'Junior Consultant', 'https://placehold.co/150x150')">
+      View Profile
+     </button>
+    </div>
+    <div class="doctor-card" data-name="Dr. Abraham John">
+     <img alt="Portrait of Dr. Abraham John" src="https://placehold.co/100x100"/>
+     <h3>
+      Dr. Abraham John
+     </h3>
+     <p>
+      Consultant
+     </p>
+     <div class="divider">
+     </div>
+     <button onclick="viewProfile('Dr. Abraham John', 'Consultant', 'https://placehold.co/150x150')">
+      View Profile
+     </button>
+    </div>
+    <div class="doctor-card" data-name="Dr. Aditya Prakash">
+     <img alt="Portrait of Dr. Aditya Prakash" src="https://placehold.co/100x100"/>
+     <h3>
+      Dr. Aditya Prakash
+     </h3>
+     <p>
+      Senior Consultant
+     </p>
+     <div class="divider">
+     </div>
+     <button onclick="viewProfile('Dr. Aditya Prakash', 'Senior Consultant', 'https://placehold.co/150x150')">
+      View Profile
+     </button>
+    </div>
+    <div class="doctor-card" data-name="Dr. Aishwarya Sharma">
+     <img alt="Portrait of Dr. Aishwarya Sharma" src="https://placehold.co/100x100"/>
+     <h3>
+      Dr. Aishwarya Sharma
+     </h3>
+     <p>
+      Resident Doctor
+     </p>
+     <div class="divider">
+     </div>
+     <button onclick="viewProfile('Dr. Aishwarya Sharma', 'Resident Doctor', 'https://placehold.co/150x150')">
+      View Profile
+     </button>
+    </div>
+    <div class="doctor-card" data-name="Dr. Akash Verma">
+     <img alt="Portrait of Dr. Akash Verma" src="https://placehold.co/100x100"/>
+     <h3>
+      Dr. Akash Verma
+     </h3>
+     <p>
+      Consultant
+     </p>
+     <div class="divider">
+     </div>
+     <button onclick="viewProfile('Dr. Akash Verma', 'Consultant', 'https://placehold.co/150x150')">
+      View Profile
+     </button>
+    </div>
+    <div class="doctor-card" data-name="Dr. Alok Kumar">
+     <img alt="Portrait of Dr. Alok Kumar" src="https://placehold.co/100x100"/>
+     <h3>
+      Dr. Alok Kumar
+     </h3>
+     <p>
+      Senior Consultant
+     </p>
+     <div class="divider">
+     </div>
+     <button onclick="viewProfile('Dr. Alok Kumar', 'Senior Consultant', 'https://placehold.co/150x150')">
+      View Profile
+     </button>
+    </div>
+    <div class="doctor-card" data-name="Dr. Anjali Mehta">
+     <img alt="Portrait of Dr. Anjali Mehta" src="https://placehold.co/100x100"/>
+     <h3>
+      Dr. Anjali Mehta
+     </h3>
+     <p>
+      Junior Consultant
+     </p>
+     <div class="divider">
+     </div>
+     <button onclick="viewProfile('Dr. Anjali Mehta', 'Junior Consultant', 'https://placehold.co/150x150')">
+      View Profile
+     </button>
+    </div>
+    <div class="doctor-card" data-name="Dr. Ankit Singh">
+     <img alt="Portrait of Dr. Ankit Singh" src="https://placehold.co/100x100"/>
+     <h3>
+      Dr. Ankit Singh
+     </h3>
+     <p>
+      Consultant
+     </p>
+     <div class="divider">
+     </div>
+     <button onclick="viewProfile('Dr. Ankit Singh', 'Consultant', 'https://placehold.co/150x150')">
+      View Profile
+     </button>
+    </div>
+    <div class="doctor-card" data-name="Dr. Anuradha Gupta">
+     <img alt="Portrait of Dr. Anuradha Gupta" src="https://placehold.co/100x100"/>
+     <h3>
+      Dr. Anuradha Gupta
+     </h3>
+     <p>
+      Senior Consultant
+     </p>
+     <div class="divider">
+     </div>
+     <button onclick="viewProfile('Dr. Anuradha Gupta', 'Senior Consultant', 'https://placehold.co/150x150')">
+      View Profile
+     </button>
+    </div>
+    <div class="doctor-card" data-name="Dr. Arjun Reddy">
+     <img alt="Portrait of Dr. Arjun Reddy" src="https://placehold.co/100x100"/>
+     <h3>
+      Dr. Arjun Reddy
+     </h3>
+     <p>
+      Consultant
+     </p>
+     <div class="divider">
+     </div>
+     <button onclick="viewProfile('Dr. Arjun Reddy', 'Consultant', 'https://placehold.co/150x150')">
+      View Profile
+     </button>
+    </div>
+    <div class="doctor-card" data-name="Dr. Ashok Kumar">
+     <img alt="Portrait of Dr. Ashok Kumar" src="https://placehold.co/100x100"/>
+     <h3>
+      Dr. Ashok Kumar
+     </h3>
+     <p>
+      Senior Consultant
+     </p>
+     <div class="divider">
+     </div>
+     <button onclick="viewProfile('Dr. Ashok Kumar', 'Senior Consultant', 'https://placehold.co/150x150', '4541560')">
+      View Profile
+     </button>
+    </div>
+   </div>
+  </div>
+  <div class="profile-modal" id="profileModal">
+   <div class="profile-content">
+    <img id="profileImage" alt="Doctor's profile picture"/>
+    <h3 id="profileName">
+    </h3>
+    <p id="profileTitle">
+    </p>
+    <div class="divider">
+    </div>
+    <button onclick="closeProfile()">
+     Close
+    </button>
+   </div>
+  </div>
+  <script>
+   function filterDoctors() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toLowerCase();
+            const doctorGrid = document.getElementById('doctorGrid');
+            const doctorCards = doctorGrid.getElementsByClassName('doctor-card');
+
+            for (let i = 0; i < doctorCards.length; i++) {
+                const doctorName = doctorCards[i].getAttribute('data-name').toLowerCase();
+                if (doctorName.includes(filter)) {
+                    doctorCards[i].style.display = "";
+                } else {
+                    doctorCards[i].style.display = "none";
+                }
+            }
+        }
+
+        function viewProfile(name, title, imageUrl) {
+            document.getElementById('profileName').innerText = name;
+            document.getElementById('profileTitle').innerText = title;
+            document.getElementById('profileImage').src = imageUrl;
+            document.getElementById('profileModal').style.display = 'flex';
+            document.getElementById('profileModal').style.display = 'flex';
+        }
+
+        function closeProfile() {
+            document.getElementById('profileModal').style.display = 'none';
+        }
+  </script>
+ </body>
+</html>

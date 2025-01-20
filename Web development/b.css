@@ -1,28 +1,66 @@
-body{
-    text-align:  center;
-
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
 }
-.btn{
-    height: 200px;
-    width: 200px;
-    border-radius: 20%;
-    border: 10px solid black;
-    margin: 2.5;
 
+header {
+    background-color: #007BFF;
+    color: white;
+    padding: 20px;
+    text-align: center;
 }
-.container{
+
+header h1 {
+    margin: 0;
+}
+
+#searchBar {
+    margin-top: 10px;
+    padding: 10px;
+    width: 80%;
+    max-width: 500px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+}
+
+main {
+    padding: 20px;
+}
+
+
+#hospitalList {
     display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
     justify-content: center;
 }
-.yellow{
-    background-color: #f99b45;
+
+.hospitalCard {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    padding: 20px;
+    text-align: center;
 }
-.red{
-    background-color: #d95980;
+
+.hospitalCard h2 {
+    margin: 10px 0;
+    font-size: 20px;
+    color: #333;
 }
-.purple{
-    background-color: #819ff9;
+
+.hospitalCard p {
+    margin: 5px 0;
+    color: #555;
 }
-.green{
-    background-color: #63aac0;
+
+.hospitalCard .contact {
+    font-weight: bold;
+    color: #007BFF;
 }

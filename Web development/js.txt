@@ -696,12 +696,10 @@ img.setAttribute('src', "creation_3.jpeg")
 # Mainpulating style  -  it can Mainpulate only style written in HTML not in CSS
 Ex - 
 let heading = document.querySelector("h1");
-heading.style;
 heading.style.color = 'blue';                   //change the color to blue
 
 
 # using classList
-
 classList.add() - to add new classes
 classList.remove() - to remove classes
 classList.contains() - to check if class exists
@@ -754,8 +752,6 @@ remove(element)
 
 1. write in html code
 <button onclick = "alert('button was clicked')"> click me </button>
-
-
 2. in js
 Ex - 
 let btns = document.querySelector("button");
