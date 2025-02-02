@@ -13,6 +13,13 @@ public class A36_Subtree_of_another_tree{
             this.right = null;
         }
     }
+ 
+    /*
+    same structure and node values
+
+     1. Find subroot in main tree
+     2. check indentical
+    */
 
     // Subtree of another tree
     public static boolean isIdentical(Node node, Node subroot){

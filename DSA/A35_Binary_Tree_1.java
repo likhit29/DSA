@@ -20,12 +20,13 @@ public class A35_Binary_Tree_1 {
 
     static class BinaryTree {
 
-        static int idx = -1; // static is important
+        static int idx = 0; // static is important
 
         public static Node buildTree(int[] nodes) {
-            idx++;
+            
             // Base case: return null if the node value is -1.
-            if (nodes[idx] == -1) {
+            if (idx >= nodes.length || nodes[idx] == -1) {
+                idx++;
                 return null;
             }
 
@@ -152,7 +153,7 @@ public class A35_Binary_Tree_1 {
             return Math.max(selfDiam, Math.max(rightDiam, leftDiam));
         }
 
-        // O(n)
+        // O(n) - by making a class we are doing recursive once only
         static class Info {
             int diam;
             int ht;
@@ -162,6 +163,7 @@ public class A35_Binary_Tree_1 {
                 this.ht = ht;
             }
         }
+
         public static Info diameter2(Node root) {
             if (root == null) {
                 return new Info(0, 0);
@@ -176,10 +178,10 @@ public class A35_Binary_Tree_1 {
 
     public static void main(String[] args) {
 
-        //int[] nodes = { 1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1 };
+        // int[] nodes = { 1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1 };
 
-        //BinaryTree tree = new BinaryTree();
-        //Node root = tree.buildTree(nodes);
+        // BinaryTree tree = new BinaryTree();
+        // Node root = tree.buildTree(nodes);
         // System.out.println("Root Node is - " + root.data);
 
         // Preorder Traversal
@@ -203,8 +205,6 @@ public class A35_Binary_Tree_1 {
 
         // System.out.println(tree.diameter2(root).diam);
         // System.out.println(tree.diameter2(root).ht);
-
-
 
     }
 }

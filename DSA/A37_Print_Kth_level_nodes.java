@@ -1,5 +1,5 @@
 //Print all Nodes of kth level
-//We can also do this by using level order traversal
+//We can also do this by using level order traversal (iterative)
 
 
 public class A37_Print_Kth_level_nodes{
@@ -15,7 +15,7 @@ public class A37_Print_Kth_level_nodes{
         }
     }
 
-
+    //By recursion
     public static void Klevel(Node root, int level, int k){
         if(root == null){
             return;

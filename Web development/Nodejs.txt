@@ -1,0 +1,2 @@
+Nodejs is a runtime environment
+Nodejs is not a language, library, frmawork
