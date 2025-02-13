@@ -69,7 +69,8 @@ class BST {
 // START	2  - Insert a Node(Recursive Approach)
 	public Node insertRecursive(Node root, int val) {
 		if (root == null) {
-			return new Node(val);
+			root = new Node(val);
+			return root;
 		}
 		// if the value is less than the root node then recur for the left subtree
 		if (val < root.data) {

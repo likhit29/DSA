@@ -54,6 +54,8 @@ public class A38_BST {
         if (root == null) {
             System.out.println("not found");
             return;
+
+            
         }
         if (root.data == data) {
             System.out.println("found");

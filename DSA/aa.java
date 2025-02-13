@@ -22,11 +22,45 @@ public class aa{
 
     }
 
+    public void preorder(Node root){
+        if(root == null){
+            return;
+        }
+        System.out.println(root.data);
+        preorder(root.left);
+        preorder(root.right);
+    }
+
+    public void inorder(Node root){
+        if(root == null){
+            return;
+        }
+       
+        inorder(root.left);
+        System.out.println(root.data);
+        inorder(root.right); 
+    }
+    public void height(Node root){
+        if(root == null){
+            return;
+        }
+       
+        inorder(root.left);
+        System.out.println(root.data);
+        inorder(root.right); 
+    }
+
+
+
+
+
 
     public static void main(String[] args) {
         int[] nodes = { 1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1 };
         aa d = new aa();
         Node root = d.insert(nodes);
+        //d.preorder(root);
+        d.inorder(root);
     }
 
 }
