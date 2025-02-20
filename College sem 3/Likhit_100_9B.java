@@ -5,22 +5,22 @@
 
 import java.util.Scanner;
 
-class Node {
+class node {
     int data;
-    Node next;
+    node next;
 
-    Node(int data) {
+    node(int data) {
         this.data = data;
     }
 }
 
 class Stack {
-    public Node top;
+    public node top;
 
     public void push(int data) {
-        Node newNode = new Node(data);
-        newNode.next = top;
-        top = newNode;
+        node newnode = new node(data);
+        newnode.next = top;
+        top = newnode;
     }
 
     public int pop() {
@@ -37,7 +37,7 @@ class Stack {
     }
 
     public void print() {
-        Node temp = top;
+        node temp = top;
         while (temp != null) {
             System.out.print(temp.data + " ");
             temp = temp.next;

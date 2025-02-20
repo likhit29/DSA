@@ -1,6 +1,6 @@
 //AVL
 
-public class Likhit_100_2 {
+public class AVL_Likhit_100_2 {
     static class Node {
         int data, height;
         Node left, right;
