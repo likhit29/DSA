@@ -1,0 +1,8 @@
+7
+MECH 
+IT 
+COMP 
+AIML 
+AIDS 
+CIVIL 
+ENTC

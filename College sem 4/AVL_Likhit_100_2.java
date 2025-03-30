@@ -99,12 +99,12 @@ public class AVL_Likhit_100_2 {
 
     public static void main(String[] args) {
         
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 10; i++) {
             int a = (int) (Math.random() * 100);
             root = insert(root, a);
         }
         inorder(root);
 
-        System.out.println("\n\n  "+ root.height);
+        System.out.println("\n"+ root.height);
     }
 }
