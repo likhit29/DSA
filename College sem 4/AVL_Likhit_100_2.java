@@ -24,6 +24,7 @@ public class AVL_Likhit_100_2 {
         }
     }
 
+    //LL Rotation
     public static Node rightRotate(Node y) {
         Node x = y.left;
         Node T2 = x.right;
