@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
+//Array of Arraylist
+
 public class A43_Graphs_A {
 
     static class Edge {
@@ -79,7 +81,9 @@ public class A43_Graphs_A {
     public static void dfs(ArrayList<Edge>[] graph){
         boolean vis[] = new boolean[graph.length];
         for(int i = 0; i<graph.length; i++){
+            if(!vis[i]){
                 dfsUtil(graph,i, vis);
+            }
         }   
     }
 

@@ -194,7 +194,7 @@ public class Likhit_100_5 {
     }
 
     public static void main(String[] args) {
-        Likhit_100_5 list = new Likhit_100_5();
+        Likhit_100_5b list = new Likhit_100_5b();
         Scanner sc = new Scanner(System.in);
         int n = 1;
 

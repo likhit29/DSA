@@ -1,118 +1,124 @@
 import java.io.*;
 import java.util.*;
 
-class Edge {
-    int s, e, w;
-
-    public Edge(int s, int e, int w) {
-        this.s = s;
-        this.e = e;
-        this.w = w;
-    }
-}
-
-class UnionFind {
-    int[] parent, rank;
-
-    public UnionFind(int n) {
-        parent = new int[n];
-        rank = new int[n];
-        for (int i = 0; i < n; i++) {
-            parent[i] = i;
-            rank[i] = 0;
+public class Likhit_100_4 {
+    static class Edge {
+        int src, dest, wt;
+        public Edge(int s, int d, int w) {
+            src = s;
+            dest = d;
+            wt = w;
         }
     }
 
-    public int find(int x) {
-        if (parent[x] != x) {
-            parent[x] = find(parent[x]); 
+    static class MinHeap {
+        ArrayList<Pair> ar = new ArrayList<>();
+        public boolean isEmpty() {
+            return ar.size() == 0;
         }
-        return parent[x];
-    }
 
-    public void union(int x, int y) {
-        int rootX = find(x);
-        int rootY = find(y);
-
-        if (rootX != rootY) {
-            // Union by rank
-            if (rank[rootX] > rank[rootY]) {
-                parent[rootY] = rootX;
-            } else if (rank[rootX] < rank[rootY]) {
-                parent[rootX] = rootY;
-            } else {
-                parent[rootY] = rootX;
-                rank[rootX]++;
+        public void add(Pair data) {
+            ar.add(data);
+            int ch = ar.size() - 1;
+            int par = (ch - 1) / 2;
+            while (ch > 0 && ar.get(ch).cost < ar.get(par).cost) {
+                Pair temp = ar.get(par);
+                ar.set(par, ar.get(ch));
+                ar.set(ch, temp);
+                ch = par;
+                par = (ch - 1) / 2;
             }
         }
+
+        private void heapify(int i) {
+            int minidx = i;
+            int left = 2 * i + 1;
+            int right = 2 * i + 2;
+
+            if (left < ar.size() && ar.get(minidx).cost > ar.get(left).cost) {
+                minidx = left;
+            }
+            if (right < ar.size() && ar.get(minidx).cost > ar.get(right).cost) {
+                minidx = right;
+            }
+            if (minidx != i) {
+                Pair temp = ar.get(i);
+                ar.set(i, ar.get(minidx));
+                ar.set(minidx, temp);
+                heapify(minidx);
+            }
+        }
+
+        public Pair remove() {
+            if (isEmpty()) return null;
+            Pair data = ar.get(0);
+            ar.set(0, ar.get(ar.size() - 1));
+            ar.remove(ar.size() - 1);
+            if (!ar.isEmpty()) heapify(0);
+            return data;
+        }
     }
-}
 
-class Likhit_100_4 {
-    List<Edge> edges;
-    int v;
-    String[] vName;
+    static class Pair {
+        int v;
+        int cost;
+        int parent;
 
-    public Likhit_100_4(String filename, String filename1) {
-        try {
-            BufferedReader fin = new BufferedReader(new FileReader(filename));
-            v = Integer.parseInt(fin.readLine());
-            edges = new ArrayList<>();
+        public Pair(int v, int cost, int parent) {
+            this.v = v;
+            this.cost = cost;
+            this.parent = parent;
+        }
+    }
 
-            String line;
-            int row = 0;
-            while ((line = fin.readLine()) != null && row < v) {
-                String[] tokens = line.split(" ");
-                for (int i = 0; i < v; i++) {
-                    int weight = Integer.parseInt(tokens[i]);
-                    if (weight != 0 && i > row) {  
-                        edges.add(new Edge(row, i, weight));
+    public static void prims(int[][] matrix) {
+        int V = matrix.length;
+        boolean[] vis = new boolean[V];
+        MinHeap pq = new MinHeap();
+
+        int[] parent = new int[V];
+        Arrays.fill(parent, -1);
+
+        pq.add(new Pair(0, 0, -1));
+
+        int finalCost = 0;
+
+        while (!pq.isEmpty()) {
+            Pair curr = pq.remove();
+
+            if (!vis[curr.v]) {
+                vis[curr.v] = true;
+                finalCost += curr.cost;
+                parent[curr.v] = curr.parent;
+
+                for (int j = 0; j < V; j++) {
+                    if (matrix[curr.v][j] != 0 && !vis[j]) {
+                        pq.add(new Pair(j, matrix[curr.v][j], curr.v));
                     }
                 }
-                row++;
-            }
-
-            BufferedReader fin1 = new BufferedReader(new FileReader(filename1));
-            vName = new String[v];
-            for (int i = 0; i < v; i++) {
-                vName[i] = fin1.readLine();
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void display() {
-        for (Edge edge : edges) {
-            System.out.println(edge.s + " " + edge.e + " " + edge.w);
-        }
-    }
-
-    public void kruskals() {
-        Collections.sort(edges, Comparator.comparingInt(e -> e.w));
-
-        UnionFind uf = new UnionFind(v);
-        List<Edge> mst = new ArrayList<>();
-
-        for (Edge edge : edges) {
-            int rootS = uf.find(edge.s);
-            int rootE = uf.find(edge.e);
-
-            if (rootS != rootE) {
-                uf.union(rootS, rootE);
-                mst.add(edge);
             }
         }
 
-        System.out.println("Path for MST: ");
-        for (Edge e : mst) {
-            System.out.println(vName[e.s] + " - " + vName[e.e] + " = " + e.w);
+        System.out.println("Minimum Spanning Tree cost: " + finalCost);
+        System.out.println("Edges in MST:");
+        for (int i = 1; i < V; i++) {
+            System.out.println(parent[i] + " - " + i + " -> " + matrix[i][parent[i]]);
         }
     }
 
     public static void main(String[] args) {
-        Likhit_100_4 G = new Likhit_100_4("m2.txt", "m3.txt");
-        G.kruskals();
+        try {
+            Scanner sc = new Scanner(new File("m2.txt"));
+            int n = sc.nextInt();
+            int[][] matrix = new int[n][n];
+
+            for (int i = 0; i < n; i++)
+                for (int j = 0; j < n; j++)
+                    matrix[i][j] = sc.nextInt();
+
+            prims(matrix);
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found: m2.txt");
+        }
     }
 }
