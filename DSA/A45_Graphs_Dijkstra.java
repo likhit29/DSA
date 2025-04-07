@@ -4,7 +4,21 @@ import java.util.PriorityQueue;
 
 //Array of Arraylist
 
-public class A45_Graphs_C   {
+// Dijkstra - Shortest paths from the source to all vertices (weighted graph)
+
+
+
+/*
+1. Make a distance array to store distance
+2. initialse every with infinity
+3. boolean visited array
+4. a priority queue 
+5. add src node in it
+6. run a while loop till pq is empty
+7. 
+ */
+
+public class A45_Graphs_Dijkstra   {
 
     static class Edge {
         int src;
@@ -59,7 +73,7 @@ public class A45_Graphs_C   {
                 dist[i] = Integer.MAX_VALUE;      //infinity
             }
         }    
-        //dist[src] = 0;
+        dist[src] = 0;
         boolean vis[] = new boolean[graph.length];
         PriorityQueue<Pair> pq = new PriorityQueue<>();
         pq.add(new Pair(src, 0));
@@ -71,7 +85,7 @@ public class A45_Graphs_C   {
                 //neighbours
                 for(int i = 0; i<graph[curr.n].size() ; i++){
                     Edge e = graph[curr.n].get(i);
-                    int u = e.src;
+                    int u = e.src; 
                     int v = e.dest;
                     int wt = e.wt;
 
@@ -85,7 +99,7 @@ public class A45_Graphs_C   {
 
         //Print all source to vertices shortest dist
         for(int i = 0; i<dist.length; i++){
-            System.out.println(dist[i] + " ");
+            System.out.print(dist[i] + " ");
         }
         System.out.println();
     }

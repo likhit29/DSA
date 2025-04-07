@@ -1,23 +1,23 @@
 Pg - 8,9,10,20,21
 // Comparison
 SQL	                MongoDB
-Database	        Database
-Table	            Collection
-Row (Record)	    Document
+Database	          Database
+Table	              Collection
+Row (Record)	      Document
 Column (Field)	    Field (Key)
 Select              Find
 
 
 //🟢 Database Commands
-show dbs	        -    List all databases
-use dbName	        -    Switch to (or create) a database
-db	                -    Show current database
-db.dropDatabase()	-    Delete current database
+show dbs	        -       List all databases
+use dbName	        -     Switch to (or create) a database
+db	                -     Show current database
+db.dropDatabase()	-       Delete current database
 
 
 
-//🗂 Collection Commands
-show collections	                            List all collections in the current DB
+//🗂 Colle  ction Commands 
+show collections	                              List all collections in the current DB
 db.createCollection("myCollection")	            Create a collection
 db.myCollection.drop()	                        Drop a collection
 
@@ -34,15 +34,28 @@ db.users.insertMany([
 
 
 //🔍 Query Documents
+
+db.<collection>.find(<query>, <projection>)
+<collection>: Name of the collection (e.g., Teachers, Students)
+<query> (optional): Filter conditions to select documents
+<projection> (optional): Specify which fields to include or exclude
+
+
 db.users.find(); // Get all documents
 db.users.find({ age: { $gt: 25 } }); // Where age > 25
 db.users.findOne({ name: "Alice" }); // Get a single document
 
-$gt, $gte, $lt, $lte	        Greater/Less than (or equal)
-$eq, $ne	                    Equals / Not equals
-$in, $nin	                    Match in array / not in array
+//🔍 Query Modifiers
+.limit(n)	                          Limit number of results
+.sort({ age: -1 })	                Sort descending
+.project({ name: 1, _id: 0 })	      Select fields to return
+
+
+$gt, $gte, $lt, $lte	          Greater/Less than (or equal)
+$eq, $ne	                      Equals / Not equals
+$in, $nin	                      Match in array / not in array
 $or, $and, $nor	                Logical operators
-$not	                        Negate a condition
+$not	                          Negate a condition
 $exists	                        Check if field exists
 
 
@@ -58,13 +71,13 @@ db.users.updateMany(
 );
 
 
-$set	            Set value
+$set	              Set value
 $unset	            Remove a field
-$inc	            Increment numeric value
-$mul	            Multiply numeric value
+$inc	              Increment numeric value
+$mul	              Multiply numeric value
 $rename	            Rename a field
 $min, $max	        Only update if new value is less/greater
-$currentDate	    Set to current date/time
+$currentDate	      Set to current date/time
 
 
 
@@ -72,21 +85,28 @@ $currentDate	    Set to current date/time
 db.users.deleteOne({ name: "Charlie" });
 db.users.deleteMany({ age: { $gt: 40 } });
 
-//🔍 Query Modifiers
-.limit(n)	                        Limit number of results
-.sort({ age: -1 })	                Sort descending
-.project({ name: 1, _id: 0 })	    Select fields to return
 
 
 //🧠 Aggregation Example - SUM, AVG, MIN, MAX, FIRST, LAST
+
+db.<collection>.aggregate([ <stage1>, <stage2>, ... ])
+It takes an array of stages, each beginning with a $ operator like $match, $group, $project, etc.
+
 
 db.users.aggregate([
   { $match: { age: { $gt: 20 } } },
   { $group: { _id: "$age", count: { $sum: 1 } } }
 ]);
 
-Db.Teacher_Info.aggregate([{$group:{_id:”$DeptName”, Total_sal : {$sum: “$sal”}}}])
+db.Teacher_Info.aggregate([{$group:{_id:”$DeptName”, Total_sal : {$sum: “$sal”}}}])
 
+//🧩 Aggregation Pipeline Stages
+
+$match	            Filter documents
+$group	            Group and aggregate
+$sort	              Sort documents
+$limit, $skip	      Limit/skip results
+$project	          Shape the output
 
 //🛡 Indexing
 db.collection.createIndex({ name: 1 }); // Ascending
@@ -98,13 +118,6 @@ db.collection.dropIndex("indexName"); // Drop index
 -1 -> descending order
 
 
-//🧩 Aggregation Pipeline Stages
-
-$match	            Filter documents
-$group	            Group and aggregate
-$sort	            Sort documents
-$project	        Shape the output
-$limit, $skip	    Limit/skip results
 
 
 
