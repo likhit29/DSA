@@ -52,6 +52,8 @@ public class Likhit_100_6 {
 
             if (root.left == null) {
                 return root;
+
+                //zig
             } else {
                 return rightRotate(root);
             }
@@ -76,6 +78,8 @@ public class Likhit_100_6 {
 
             if (root.right == null) {
                 return root;
+            
+                //zag
             } else {
                 return leftRotate(root);
             }

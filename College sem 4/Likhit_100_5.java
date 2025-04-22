@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.PriorityQueue;
 import java.util.Scanner;
 
 public class Likhit_100_5 {
@@ -17,7 +18,16 @@ public class Likhit_100_5 {
         }
     }
 
-    static class Pair {
+    // static class Pair {
+    //     int n;
+    //     int path;
+
+    //     public Pair(int n, int path) {
+    //         this.n = n;
+    //         this.path = path;
+    //     }
+    // }
+    static class Pair implements Comparable<Pair> {
         int n;
         int path;
 
@@ -25,101 +35,92 @@ public class Likhit_100_5 {
             this.n = n;
             this.path = path;
         }
-    }
 
-    static void createGraph(ArrayList<Edge>[] graph, int[][] matrix) {
-        int V = matrix.length;
-        for (int i = 0; i < V; i++) {
-            graph[i] = new ArrayList<>();
-        }
-
-        for (int i = 0; i < V; i++) {
-            for (int j = 0; j < V; j++) {
-                if (matrix[i][j] != 0) {
-                    graph[i].add(new Edge(i, j, matrix[i][j]));
-                }
-            }
+        @Override
+        public int compareTo(Pair other) {
+            return this.path - other.path;
         }
     }
 
-    static class MinHeap {
-        ArrayList<Pair> ar = new ArrayList<>();
 
-        public boolean isEmpty() {
-            return ar.size() == 0;
-        }
+    // static class MinHeap {
+    //     ArrayList<Pair> ar = new ArrayList<>();
 
-        public void add(Pair data) {
-            ar.add(data);
-            int ch = ar.size() - 1;
-            int par = (ch - 1) / 2;
-            while (ch > 0 && ar.get(ch).path < ar.get(par).path) {
-                Pair temp = ar.get(par);
-                ar.set(par, ar.get(ch));
-                ar.set(ch, temp);
+    //     public boolean isEmpty() {
+    //         return ar.size() == 0;
+    //     }
 
-                ch = par;
-                par = (ch - 1) / 2;
-            }
-        }
+    //     public void add(Pair data) {
+    //         ar.add(data);
+    //         int ch = ar.size() - 1;
+    //         int par = (ch - 1) / 2;
+    //         while (ch > 0 && ar.get(ch).path < ar.get(par).path) {
+    //             Pair temp = ar.get(par);
+    //             ar.set(par, ar.get(ch));
+    //             ar.set(ch, temp);
 
-        public Pair peek() {
-            if (isEmpty()) {
-                return null;
-            }
-            return ar.get(0);
-        }
+    //             ch = par;
+    //             par = (ch - 1) / 2;
+    //         }
+    //     }
 
-        private void heapify(int i) {
-            int minidx = i;
-            int left = 2 * i + 1;
-            int right = 2 * i + 2;
+    //     public Pair peek() {
+    //         if (isEmpty()) {
+    //             return null;
+    //         }
+    //         return ar.get(0);
+    //     }
 
-            if (left < ar.size() && ar.get(minidx).path > ar.get(left).path) {
-                minidx = left;
-            }
-            if (right < ar.size() && ar.get(minidx).path > ar.get(right).path) {
-                minidx = right;
-            }
-            if (minidx != i) {
-                Pair temp = ar.get(i);
-                ar.set(i, ar.get(minidx));
-                ar.set(minidx, temp);
+    //     private void heapify(int i) {
+    //         int minidx = i;
+    //         int left = 2 * i + 1;
+    //         int right = 2 * i + 2;
 
-                heapify(minidx);
-            }
-        }
+    //         if (left < ar.size() && ar.get(minidx).path > ar.get(left).path) {
+    //             minidx = left;
+    //         }
+    //         if (right < ar.size() && ar.get(minidx).path > ar.get(right).path) {
+    //             minidx = right;
+    //         }
+    //         if (minidx != i) {
+    //             Pair temp = ar.get(i);
+    //             ar.set(i, ar.get(minidx));
+    //             ar.set(minidx, temp);
 
-        public Pair remove() {
-            if (isEmpty()) {
-                return null;
-            }
-            Pair data = ar.get(0);
-            ar.set(0, ar.get(ar.size() - 1));
-            ar.remove(ar.size() - 1);
+    //             heapify(minidx);
+    //         }
+    //     }
 
-            if (!ar.isEmpty()) {
-                heapify(0);
-            }
-            return data;
-        }
+    //     public Pair remove() {
+    //         if (isEmpty()) {
+    //             return null;
+    //         }
+    //         Pair data = ar.get(0);
+    //         ar.set(0, ar.get(ar.size() - 1));
+    //         ar.remove(ar.size() - 1);
 
-        public boolean checkHeap() {
-            int n = ar.size();
-            for (int i = 0; i < n / 2; i++) {
-                int left = 2 * i + 1;
-                int right = 2 * i + 2;
+    //         if (!ar.isEmpty()) {
+    //             heapify(0);
+    //         }
+    //         return data;
+    //     }
 
-                if (left < n && ar.get(i).path > ar.get(left).path) {
-                    return false;
-                }
-                if (right < n && ar.get(i).path > ar.get(right).path) {
-                    return false;
-                }
-            }
-            return true;
-        }
-    }
+    //     public boolean checkHeap() {
+    //         int n = ar.size();
+    //         for (int i = 0; i < n / 2; i++) {
+    //             int left = 2 * i + 1;
+    //             int right = 2 * i + 2;
+
+    //             if (left < n && ar.get(i).path > ar.get(left).path) {
+    //                 return false;
+    //             }
+    //             if (right < n && ar.get(i).path > ar.get(right).path) {
+    //                 return false;
+    //             }
+    //         }
+    //         return true;
+    //     }
+    // }
 
     public static void dijkstra(ArrayList<Edge>[] graph, int src) {
         int[] dist = new int[graph.length];
@@ -128,9 +129,9 @@ public class Likhit_100_5 {
                 dist[i] = Integer.MAX_VALUE;      //infinity
             }
         }  
-
         boolean[] vis = new boolean[graph.length];
-        MinHeap pq = new MinHeap();
+        //MinHeap pq = new MinHeap();
+        PriorityQueue<Pair> pq = new PriorityQueue<>();
         pq.add(new Pair(src, 0));
 
         while (!pq.isEmpty()) {
@@ -156,25 +157,24 @@ public class Likhit_100_5 {
         }
     }
 
-    public static void main(String[] args) {
-        try {
+    public static void main(String[] args) throws Exception {
             Scanner sc = new Scanner(new File("m2.txt"));
             int V = sc.nextInt();
-            int[][] matrix = new int[V][V];
-
+        
+            ArrayList<Edge>[] graph = new ArrayList[V];
             for (int i = 0; i < V; i++) {
+                graph[i] = new ArrayList<>();
                 for (int j = 0; j < V; j++) {
-                    matrix[i][j] = sc.nextInt();
+                    int wt = sc.nextInt();
+                    if (wt != 0) {
+                        graph[i].add(new Edge(i, j, wt));
+                    }
                 }
             }
+        
+            dijkstra(graph, 0);
+        
 
-            ArrayList<Edge>[] graph = new ArrayList[V];
-            createGraph(graph, matrix);
-            int src = 0;
-            dijkstra(graph, src);
-
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found: " + e.getMessage());
-        }
+        
     }
 }
