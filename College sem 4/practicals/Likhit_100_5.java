@@ -160,7 +160,6 @@ public class Likhit_100_5 {
     public static void main(String[] args) throws Exception {
             Scanner sc = new Scanner(new File("m2.txt"));
             int V = sc.nextInt();
-        
             ArrayList<Edge>[] graph = new ArrayList[V];
             for (int i = 0; i < V; i++) {
                 graph[i] = new ArrayList<>();

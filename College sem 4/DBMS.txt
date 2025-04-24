@@ -16,7 +16,7 @@ db.dropDatabase()	-       Delete current database
 
 
 
-//🗂 Colle  ction Commands 
+//🗂 Collection Commands 
 show collections	                              List all collections in the current DB
 db.createCollection("myCollection")	            Create a collection
 db.myCollection.drop()	                        Drop a collection
