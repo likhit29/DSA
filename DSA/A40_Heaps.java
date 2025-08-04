@@ -11,6 +11,12 @@ Priority Queue is imeplemeted by Heap data structure
 
 // difference in solving using arraylist and array
 
+
+
+//MIN HEAP
+
+
+
 import java.util.ArrayList;
 
 public class A40_Heaps {
@@ -22,7 +28,7 @@ public class A40_Heaps {
             return ar.size() == 0;
         }
 
-        /*
+        /* HEAPIFY UP
          * 1. add at last
          * 2. fix heap by comparing last node(child) with its parent -> x-1/2
          */
@@ -47,7 +53,7 @@ public class A40_Heaps {
             return ar.get(0);
         }
 
-        /*
+        /*HEAPIFY DOWN
          * deleting in min heap means deleting minimum element (which is root)
          * 1. swap 1st(root) and last node
          * 2. remove last node(last index)
@@ -84,16 +90,31 @@ public class A40_Heaps {
                 return Integer.MIN_VALUE; // Default value to indicate an empty heap
             }
             int data = ar.get(0);
-
-            int temp = ar.get(0);
             ar.set(0, ar.get(ar.size() - 1));
-            ar.set(ar.size() - 1, temp);
-
             ar.remove(ar.size() - 1);
-
-            heapify(0);
+            
+            if (!ar.isEmpty()) {
+                heapify(0);
+            }
             return data;
         }
+
+        public boolean checkHeap() {
+            int n = ar.size();
+            for (int i = 0; i < n / 2; i++) {
+                int left = 2 * i + 1;
+                int right = 2 * i + 2;
+    
+                if (left < n && ar.get(i) > ar.get(left)) {
+                    return false; 
+                }
+                if (right < n && ar.get(i) > ar.get(right)) {
+                    return false; 
+                }
+            }
+            return true;
+        }
+    
     }
 
     public static void main(String[] args) {

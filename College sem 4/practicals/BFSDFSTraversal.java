@@ -108,7 +108,7 @@ class Graph{
 
                 }
             }
-        }
+        }   
     }
     public void DFS(int start){
         Stack s = new Stack(vertices);
@@ -118,14 +118,13 @@ class Graph{
         while(!s.isEmpty()){
             int temp = s.peek();
             System.out.print(temp + " ");
-            boolean found = false;
+            boolean found = false;                      //
             for(int i = 0; i < vertices;i++){
                 if(A[i][temp] != 0 && !visited[i]){
                     s.push(i);
                     visited[i] = true;
-                    found = true;
-                    break;
-                    
+                    found = true;                       //
+                    break;                          //
                 }
             }
             if(!found){

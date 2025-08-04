@@ -51,6 +51,7 @@ public class A46_Graphs_prims   {
         }
     }
 
+    //O(E log V)
     public static void prims(ArrayList<Edge> graph[], int src){
         boolean vis[] = new boolean[graph.length];
         PriorityQueue<Pair> pq = new PriorityQueue<>();
